@@ -33,7 +33,7 @@ const GrbHeader = () => {
           isScrolled ? 'bg-transparent' : 'bg-[#0e63ed] after:absolute after:top-0 after:right-[-40px] after:h-full after:w-[80px] after:origin-top-left after:-skew-x-[25deg] after:bg-[#0e63ed] after:content-[""]'
         }`}>
           <div className="flex items-baseline text-white z-10">
-            <span className="text-4xl font-black tracking-tight font-sans">Career360.</span>
+            <span className="text-4xl font-black tracking-tight font-sans">eurecruiter.</span>
           </div>
         </div>
 
