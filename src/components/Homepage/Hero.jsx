@@ -1,139 +1,122 @@
-import React from 'react';
-import { Search, ChevronDown ,ArrowRight } from 'lucide-react';
-import GrbGraduatePortrait from '../../assests/hero-image.png'; 
+import React, { useState } from 'react';
+import { ChevronLeft, ChevronRight, Home } from 'lucide-react';
+import VickyTsuiImage from '../../assests/hero-image.png'; 
+
+const teamMembers = [
+  { name: "Chang Qiu Sheng", role: "CEO", img: VickyTsuiImage, bio: "Strategic leader with over 20 years of experience in aviation management and corporate scaling." },
+  { name: "Vicky Tsui", role: "VP of Sales & Marketing", img: VickyTsuiImage, bio: "Ms. Tsui oversees business development, management and marketing in the Asia Pacific region. She plays a leading role in setting up customised business jet programs, providing customers with a flexible high-end service tailored to their specific needs." },
+  { name: "Yongyi Zhang", role: "VP of Flight Operation", img: VickyTsuiImage, bio: "Expert in global flight logistics, safety protocols, and international aviation compliance." },
+  { name: "Bob Li", role: "VP of Operations", img: VickyTsuiImage, bio: "Driving operational excellence through streamlined workflows and innovative resource management." },
+  { name: "David Du", role: "Executive VP", img: VickyTsuiImage, bio: "Spearheading global partnerships and long-term infrastructure development strategies." },
+  { name: "Zoe Zhao", role: "VP of Finance", img: VickyTsuiImage, bio: "Managing fiscal health and strategic investments to ensure sustainable corporate growth." },
+  { name: "Nicole Chen", role: "VP of HR", img: VickyTsuiImage, bio: "Dedicated to building high-performance teams and fostering a world-class corporate culture." }
+];
 
 const Hero = () => {
-  const tags = [
-    "Marketing", "Computer Science", "Graduate Scheme", 
-    "Sustainability", "Hybrid Working", "Diversity", "Artificial Intelligence"
-  ];
+  const [activeIdx, setActiveIdx] = useState(1);
+
+  const nextMember = () => setActiveIdx((prev) => (prev + 1) % teamMembers.length);
+  const prevMember = () => setActiveIdx((prev) => (prev - 1 + teamMembers.length) % teamMembers.length);
 
   return (
-    <section className="relative w-full h-[900px] min-h-[800px] flex items-center bg-white overflow-hidden font-sans">
+    <section className="relative w-full min-h-screen bg-[#f8fafc] flex flex-col font-sans overflow-hidden">
       
-      {/* 1. ASYMMETRIC BACKGROUND PANELS */}
-      <div className="absolute inset-0 flex z-0 pointer-events-none">
-        {/* The Blue Left Panel is actually smaller (approx 30%) */}
-        <div className="w-[50%] h-full bg-[#0e63ed]"></div>
-        <div className="w-[70%] h-full bg-[#f9fafb]"></div>
-      </div>
+      {/* 1. TOP NAVIGATION */}
+      <nav className="w-full max-w-[90rem] mx-auto px-6 md:px-12 pt-8 flex items-center gap-2 text-[10px] md:text-xs text-slate-400 font-medium z-30">
+        <Home className="w-3 h-3" />
+        <span className="opacity-50">/</span>
+        <span className="text-slate-600 tracking-wide uppercase">Management Team</span>
+      </nav>
 
-      {/* 2. CENTERED GRADUATE PORTRAIT WITH SLOW ZOOM */}
-      <div className="absolute inset-0 z-10 flex justify-center pointer-events-none">
-        <div className="relative h-full w-full max-w-[1400px]">
+      {/* 2. MAIN CONTENT AREA */}
+      <div className="flex-grow flex flex-col lg:flex-row items-center relative w-full max-w-[90rem] mx-auto px-6 md:px-12 pb-32 lg:pb-0">
+        
+        {/* Navigation Arrows - Only visible on Large Screens */}
+        <button 
+          onClick={prevMember}
+          className="hidden lg:flex absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 items-center justify-center text-slate-300 hover:text-slate-900 transition-colors z-30"
+        >
+          <ChevronLeft className="w-8 h-8 stroke-[1px]" />
+        </button>
+        <button 
+          onClick={nextMember}
+          className="hidden lg:flex absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 items-center justify-center text-slate-300 hover:text-slate-900 transition-colors z-30"
+        >
+          <ChevronRight className="w-8 h-8 stroke-[1px]" />
+        </button>
+
+        {/* Text Side */}
+        <div className="w-full lg:w-1/2 pt-12 lg:pt-0 text-center lg:text-left z-10 order-2 lg:order-1">
+          <div className="overflow-hidden">
+            <h1 className="text-4xl md:text-6xl lg:text-8xl font-extralight text-slate-900 mb-2 tracking-tighter animate-reveal-up">
+              {teamMembers[activeIdx].name}
+            </h1>
+          </div>
+          <h2 className="text-sm md:text-lg lg:text-xl text-blue-600 font-medium mb-6 lg:mb-10 tracking-[0.2em] uppercase italic">
+            {teamMembers[activeIdx].role}
+          </h2>
+          
+          <div className="max-w-md mx-auto lg:mx-0">
+            <p className="text-sm md:text-base leading-relaxed text-slate-500 font-light text-center lg:text-justify opacity-80 transition-opacity duration-500">
+              {teamMembers[activeIdx].bio}
+            </p>
+          </div>
+        </div>
+
+        {/* Image Side */}
+        <div className="w-full lg:w-1/2 h-[45vh] lg:h-[75vh] flex items-end justify-center relative order-1 lg:order-2">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#f8fafc] lg:hidden z-10 h-full pointer-events-none" />
           <img 
-            src={GrbGraduatePortrait} 
-            alt="Graduate" 
-            className="absolute left-[25%] h-full w-auto object-cover grayscale brightness-110 contrast-115 mix-blend-multiply animate-zoom-slow"
+            key={activeIdx}
+            src={teamMembers[activeIdx].img} 
+            alt={teamMembers[activeIdx].name} 
+            className="h-full w-auto object-contain z-0 select-none animate-image-entry drop-shadow-2xl"
           />
         </div>
       </div>
 
-      {/* 3. FOREGROUND CONTENT LAYER */}
-      <div className="relative z-30 w-full max-w-[1800px] mx-auto px-8 md:px-16 lg:px-24 flex flex-col justify-center h-full items-start">
-        
-        <div className="max-w-3xl w-full">
-          {/* Main Headline with tight tracking */}
-          <h1 className="text-5xl md:text-[80px] font-black text-white md:text-slate-900 leading-[0.8] tracking-tighter mb-12 drop-shadow-sm">
-            <span className="text-white">Get the career</span> <br />
-            <span className="md:text-slate-900">you deserve</span>
-          </h1>
-
-          {/* COMPLEX SEARCH BAR UI */}
-          <div className="flex flex-col md:flex-row items-center bg-white rounded-2xl md:rounded-full p-2 shadow-[0_20px_50px_rgba(0,0,0,0.1)] w-full max-w-4xl mb-10 border border-gray-100">
-            {/* Field 1: Keywords */}
-            <div className="flex-grow flex items-center w-full">
-              <input 
-                type="text" 
-                placeholder="Search jobs" 
-                className="w-full bg-transparent pl-8 pr-4 py-5 text-gray-800 outline-none text-xl font-bold placeholder:text-gray-300"
-              />
-            </div>
-            
-            {/* Divider */}
-            <div className="hidden md:block h-10 w-[1.5px] bg-gray-100"></div>
-            
-            {/* Field 2: Job Type Dropdown */}
-            <div className="relative flex items-center group w-full md:w-[220px]">
-              <select className="w-full bg-transparent pl-8 pr-12 py-5 text-[#0e63ed] font-bold text-xl outline-none appearance-none cursor-pointer z-10">
-                <option>Graduate</option>
-                <option>Internship</option>
-                <option>Placement</option>
-              </select>
-              <ChevronDown className="absolute right-6 text-[#0e63ed] pointer-events-none w-6 h-6 transition-transform group-hover:translate-y-0.5" />
-            </div>
-
-            {/* Field 3: Search Action */}
-            <button className="w-full md:w-auto bg-[#0e63ed] p-5 rounded-xl md:rounded-full text-white hover:bg-blue-700 transition-all flex items-center justify-center md:ml-2 group">
-              <Search size={30} strokeWidth={3} className="group-hover:scale-110 transition-transform" />
-            </button>
-          </div>
-
-          {/* TRENDING TAGS */}
-          <div className="flex flex-wrap gap-2">
-            {tags.map((tag) => (
+      {/* 3. TEAM SCRUBBER (Bottom Navigation) */}
+      <div className="fixed lg:absolute bottom-0 w-full h-24 lg:h-36 flex items-center bg-white/70 backdrop-blur-xl border-t border-slate-200/50 z-40">
+        <div className="w-full overflow-x-auto no-scrollbar scroll-smooth">
+          <div className="flex gap-6 md:gap-10 items-center px-6 md:px-12 min-w-max mx-auto justify-start lg:justify-center">
+            {teamMembers.map((member, idx) => (
               <button 
-                key={tag} 
-                className="bg-[#001a33] hover:bg-[#0e63ed] text-white text-[11px] font-bold uppercase tracking-widest px-6 py-2.5 rounded-full transition-all hover:-translate-y-0.5"
+                key={idx} 
+                onClick={() => setActiveIdx(idx)}
+                className={`flex flex-col items-center group transition-all duration-300 ${idx === activeIdx ? 'scale-105' : 'opacity-40 grayscale hover:opacity-100 hover:grayscale-0'}`}
               >
-                {tag}
+                <div className={`w-10 h-10 lg:w-14 lg:h-14 rounded-full overflow-hidden border-2 mb-2 transition-all ${idx === activeIdx ? 'border-blue-500 ring-4 ring-blue-50' : 'border-transparent group-hover:border-slate-300'}`}>
+                   <img src={member.img} alt={member.name} className="w-full h-full object-cover" />
+                </div>
+                <span className={`text-[8px] lg:text-[10px] font-bold uppercase tracking-tighter whitespace-nowrap ${idx === activeIdx ? 'text-slate-900' : 'text-slate-400'}`}>
+                  {member.name}
+                </span>
               </button>
             ))}
           </div>
         </div>
       </div>
 
-      {/* 4. SIGNATURE BRAND ELEMENTS */}
-      
-      {/* The Rotating "Who is Hiring" Badge (Bottom Right) */}
-      <div className="absolute bottom-12 right-12 z-40 hidden lg:block">
-        <div className="relative w-32 h-32 animate-spin-slow">
-          <svg viewBox="0 0 100 100" className="w-full h-full">
-            <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
-            <text className="text-[9px] font-black uppercase tracking-[0.2em] fill-slate-900">
-              <textPath xlinkHref="#circlePath">
-                • WHO IS HIRING • WHO IS HIRING • WHO IS HIRING 
-              </textPath>
-            </text>
-          </svg>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <ArrowRight className="w-6 h-6 text-slate-900 -rotate-45" />
-          </div>
-        </div>
-      </div>
+      <style jsx global>{`
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-      {/* The Yellow/Blue Slatted Circle Badge */}
-      <div className="absolute left-[27%] bottom-16 w-32 h-32 hidden xl:flex items-center justify-center z-40">
-        <div className="w-full h-full bg-[#ccff00] rounded-full overflow-hidden flex flex-col justify-center items-center -rotate-45 shadow-lg border-4 border-white">
-          {[...Array(7)].map((_, i) => (
-            <div key={i} className="w-[180%] h-2.5 bg-[#0e63ed] my-[3px] rounded-full"></div>
-          ))}
-        </div>
-      </div>
+        @keyframes reveal-up {
+          from { transform: translateY(100%); opacity: 0; }
+          to { transform: translateY(0); opacity: 1; }
+        }
 
-      {/* Vertical Side Text */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 z-30 hidden lg:block">
-        <div className="rotate-90 origin-right pr-12">
-          <span className="text-[13px] font-black uppercase text-slate-900 tracking-[0.4em] whitespace-nowrap opacity-100">
-             Early talent experts
-          </span>
-        </div>
-      </div>
+        @keyframes image-entry {
+          from { opacity: 0; transform: scale(0.95) translateX(20px); }
+          to { opacity: 1; transform: scale(1) translateX(0); }
+        }
 
-      <style jsx>{`
-        @keyframes zoom-slow {
-          0% { transform: scale(1.05) translateX(0px); }
-          100% { transform: scale(1.12) translateX(10px); } 
+        .animate-reveal-up {
+          animation: reveal-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        .animate-zoom-slow {
-          animation: zoom-slow 20s ease-in-out infinite alternate;
-        }
-        .animate-spin-slow {
-          animation: spin-slow 12s linear infinite;
+
+        .animate-image-entry {
+          animation: image-entry 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
       `}</style>
     </section>
