@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, ArrowRight, MapPin, Search, Plus, Info } from 'lucide-react';
+import { ChevronDown, ArrowRight, Search, Plus } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const CareerPathways = () => {

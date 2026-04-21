@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Quote, ChevronRight, Volume2, Star } from "lucide-react";
+import { Play, Quote, ChevronRight, Volume2} from "lucide-react";
 
 const mainTestimonials = [
   {
