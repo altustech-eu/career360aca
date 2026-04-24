@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GraduationCap, Briefcase, Hammer, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { GraduationCap, Briefcase, Hammer, ArrowRight} from 'lucide-react';
 import HeroImage from '../../assests/hero-image.png';
 
 const GermanHero = () => {
