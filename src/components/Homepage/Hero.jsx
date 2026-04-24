@@ -1,123 +1,167 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, Home } from 'lucide-react';
-import VickyTsuiImage from '../../assests/hero-image.png'; 
-
-const teamMembers = [
-  { name: "Chang Qiu Sheng", role: "CEO", img: VickyTsuiImage, bio: "Strategic leader with over 20 years of experience in aviation management and corporate scaling." },
-  { name: "Vicky Tsui", role: "VP of Sales & Marketing", img: VickyTsuiImage, bio: "Ms. Tsui oversees business development, management and marketing in the Asia Pacific region. She plays a leading role in setting up customised business jet programs, providing customers with a flexible high-end service tailored to their specific needs." },
-  { name: "Yongyi Zhang", role: "VP of Flight Operation", img: VickyTsuiImage, bio: "Expert in global flight logistics, safety protocols, and international aviation compliance." },
-  { name: "Bob Li", role: "VP of Operations", img: VickyTsuiImage, bio: "Driving operational excellence through streamlined workflows and innovative resource management." },
-  { name: "David Du", role: "Executive VP", img: VickyTsuiImage, bio: "Spearheading global partnerships and long-term infrastructure development strategies." },
-  { name: "Zoe Zhao", role: "VP of Finance", img: VickyTsuiImage, bio: "Managing fiscal health and strategic investments to ensure sustainable corporate growth." },
-  { name: "Nicole Chen", role: "VP of HR", img: VickyTsuiImage, bio: "Dedicated to building high-performance teams and fostering a world-class corporate culture." }
-];
+import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
 
 const Hero = () => {
-  const [activeIdx, setActiveIdx] = useState(1);
+  const [activeCourse, setActiveCourse] = useState(0);
 
-  const nextMember = () => setActiveIdx((prev) => (prev + 1) % teamMembers.length);
-  const prevMember = () => setActiveIdx((prev) => (prev - 1 + teamMembers.length) % teamMembers.length);
+  // Carousel 1: Hero Contents
+  const instructors = [
+    { 
+      name: "Sam Burriss", 
+      lessons: "16 lessons", 
+      title: "B&W Photography", 
+      desc: "Sam Burriss teaches how to work with your subject in a minimalist, high-contrast editorial environment.",
+      portrait: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260",
+      bgColor: "#1A1A1A" // Slide 1: Deep Gray/Black
+    },
+    { 
+      name: "Noah Buscher", 
+      lessons: "12 lessons", 
+      title: "Urban Lighting", 
+      desc: "Master the art of cinematic cityscapes and low-light street photography with Noah Buscher.",
+      portrait: "https://images.pexels.com/photos/1261427/pexels-photo-1261427.jpeg?auto=compress&cs=tinysrgb&w=1260",
+      bgColor: "#D91E1E" // Slide 2: German Red
+    },
+    { 
+      name: "Jordan Whitfield", 
+      lessons: "15 lessons", 
+      title: "Studio Portraits", 
+      desc: "Jordan Whitfield breaks down professional studio lighting and posing for high-end fashion magazines.",
+      portrait: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260",
+      bgColor: "#FACC15" // Slide 3: German Yellow/Gold
+    }
+  ];
+
+  // Carousel 2: Product Data
+  const products = [
+    { name: "AIR", img: "https://images.pexels.com/photos/1464625/pexels-photo-1464625.jpeg?auto=compress&cs=tinysrgb&w=800", color: "#333333" },
+    { name: "ZOOM", img: "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=800", color: "#FF0000" },
+    { name: "MAX", img: "https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=800", color: "#FFCC00" }
+  ];
+
+  // Carousel 3: News Data
+  const newsItems = [
+    { title: "Sport Footwear Studio Photography", date: "MAR 2, 2026" },
+    { title: "The Rise of Minimalist Aesthetics", date: "APR 15, 2026" },
+    { title: "Future of Digital Art Direction", date: "MAY 20, 2026" }
+  ];
+
+  const handleNext = () => {
+    setActiveCourse((prev) => (prev + 1) % instructors.length);
+  };
+
+  const handlePrev = () => {
+    setActiveCourse((prev) => (prev - 1 + instructors.length) % instructors.length);
+  };
 
   return (
-    <section className="relative w-full min-h-screen bg-[#f8fafc] flex flex-col font-sans overflow-hidden">
+    <section 
+      style={{ backgroundColor: instructors[activeCourse].bgColor }}
+      className="relative w-full h-auto lg:h-[950px] font-sans overflow-hidden flex flex-col transition-colors duration-1000 selection:bg-white selection:text-black"
+    >
       
-      {/* 1. TOP NAVIGATION */}
-      <nav className="w-full max-w-[90rem] mx-auto px-6 md:px-12 pt-8 flex items-center gap-2 text-[10px] md:text-xs text-slate-400 font-medium z-30">
-        <Home className="w-3 h-3" />
-        <span className="opacity-50">/</span>
-        <span className="text-slate-600 tracking-wide uppercase">Management Team</span>
-      </nav>
-
-      {/* 2. MAIN CONTENT AREA */}
-      <div className="flex-grow flex flex-col lg:flex-row items-center relative w-full max-w-[90rem] mx-auto px-6 md:px-12 pb-32 lg:pb-0">
+      {/* 2. MAIN HERO SECTION (CAROUSEL 1) */}
+      <div className="flex-grow grid grid-cols-1 lg:grid-cols-2 items-center px-6 lg:px-16 pt-32 lg:pt-16">
         
-        {/* Navigation Arrows - Only visible on Large Screens */}
-        <button 
-          onClick={prevMember}
-          className="hidden lg:flex absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 items-center justify-center text-slate-300 hover:text-slate-900 transition-colors z-30"
-        >
-          <ChevronLeft className="w-8 h-8 stroke-[1px]" />
-        </button>
-        <button 
-          onClick={nextMember}
-          className="hidden lg:flex absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 items-center justify-center text-slate-300 hover:text-slate-900 transition-colors z-30"
-        >
-          <ChevronRight className="w-8 h-8 stroke-[1px]" />
-        </button>
-
-        {/* Text Side */}
-        <div className="w-full lg:w-1/2 pt-12 lg:pt-0 text-center lg:text-left z-10 order-2 lg:order-1">
-          <div className="overflow-hidden">
-            <h1 className="text-4xl md:text-6xl lg:text-8xl font-extralight text-slate-900 mb-2 tracking-tighter animate-reveal-up">
-              {teamMembers[activeIdx].name}
-            </h1>
-          </div>
-          <h2 className="text-sm md:text-lg lg:text-xl text-blue-600 font-medium mb-6 lg:mb-10 tracking-[0.2em] uppercase italic">
-            {teamMembers[activeIdx].role}
-          </h2>
-          
-          <div className="max-w-md mx-auto lg:mx-0">
-            <p className="text-sm md:text-base leading-relaxed text-slate-500 font-light text-center lg:text-justify opacity-80 transition-opacity duration-500">
-              {teamMembers[activeIdx].bio}
-            </p>
-          </div>
+        {/* Left Side: Typography */}
+        <div key={`text-${activeCourse}`} className="z-10 py-10 text-center lg:text-left lg:pr-20 animate-in fade-in slide-in-from-left-8 duration-700">
+          <h1 className={`text-5xl md:text-7xl lg:text-[100px] font-extralight mb-5 leading-[1] tracking-tighter ${activeCourse === 2 ? 'text-black' : 'text-white'}`}>
+            {instructors[activeCourse].title.split(' ')[0]} <br className="hidden lg:block" /> {instructors[activeCourse].title.split(' ')[1]}
+          </h1>
+          <p className={`text-base lg:text-lg font-medium mb-12 max-w-sm mx-auto lg:mx-0 ${activeCourse === 2 ? 'text-black/60' : 'text-white/60'}`}>
+            {instructors[activeCourse].desc}
+          </p>
+          <button className={`group inline-flex items-center gap-4 border rounded-full px-10 py-4 font-bold transition-all duration-300 ${activeCourse === 2 ? 'border-black text-black hover:bg-black hover:text-white' : 'border-white text-white hover:bg-white hover:text-black'}`}>
+            <Play className="w-4 h-4 fill-current" />
+            <span className="text-[11px] uppercase tracking-[0.25em]">Watch trailer</span>
+          </button>
         </div>
 
-        {/* Image Side */}
-        <div className="w-full lg:w-1/2 h-[45vh] lg:h-[75vh] flex items-end justify-center relative order-1 lg:order-2">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#f8fafc] lg:hidden z-10 h-full pointer-events-none" />
-          <img 
-            key={activeIdx}
-            src={teamMembers[activeIdx].img} 
-            alt={teamMembers[activeIdx].name} 
-            className="h-full w-auto object-contain z-0 select-none animate-image-entry drop-shadow-2xl"
-          />
+        {/* Right Side: Editorial Portrait (CAROUSEL 1 IMAGE) */}
+        <div className="h-[250px] lg:h-[450px] flex items-end justify-center relative mt-10 lg:mt-0 lg:ml-20">
+          <div key={`img-${activeCourse}`} className="relative h-full w-full flex items-end justify-center animate-in fade-in zoom-in-95 duration-1000">
+            <img 
+              src={instructors[activeCourse].portrait} 
+              alt="Lead Instructor" 
+              className={`h-full lg:h-[95%] w-auto object-contain grayscale opacity-90 contrast-125 mix-blend-multiply transition-all duration-1000 ${activeCourse === 2 ? 'brightness-100' : 'brightness-150'}`}
+              style={{
+                maskImage: 'linear-gradient(to top, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%)',
+                WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%)'
+              }}
+            />
+          </div>
+          <div className={`absolute left-10 top-1/2 w-48 h-px z-10 hidden xl:block ${activeCourse === 2 ? 'bg-black/10' : 'bg-white/10'}`} />
         </div>
       </div>
 
-      {/* 3. TEAM SCRUBBER (Bottom Navigation) */}
-      <div className="fixed lg:absolute bottom-0 w-full h-24 lg:h-36 flex items-center bg-white/70 backdrop-blur-xl border-t border-slate-200/50 z-40">
-        <div className="w-full overflow-x-auto no-scrollbar scroll-smooth">
-          <div className="flex gap-6 md:gap-10 items-center px-6 md:px-12 min-w-max mx-auto justify-start lg:justify-center">
-            {teamMembers.map((member, idx) => (
-              <button 
-                key={idx} 
-                onClick={() => setActiveIdx(idx)}
-                className={`flex flex-col items-center group transition-all duration-300 ${idx === activeIdx ? 'scale-105' : 'opacity-40 grayscale hover:opacity-100 hover:grayscale-0'}`}
+      {/* 3. BENTO FOOTER */}
+      <div className={`grid grid-cols-1 lg:grid-cols-[1.3fr,1fr,1.3fr] h-auto w-full items-end border-t ${activeCourse === 2 ? 'border-black/5' : 'border-white/5'}`}>
+        
+        <div className="bg-white flex items-center justify-end px-10 py-12 lg:py-0 h-full lg:h-[310px] relative border-b lg:border-b-0 border-black/5">
+          {/* Controls */}
+          <div className="absolute -top-10 right-0 bg-white px-6 py-3 flex gap-6 border border-black/5 shadow-sm z-20">
+            <ChevronLeft onClick={handlePrev} className="w-4 h-4 cursor-pointer text-black/20 hover:text-black transition-colors" />
+            <ChevronRight onClick={handleNext} className="w-4 h-4 cursor-pointer hover:text-black transition-colors" />
+          </div>
+
+          <div className="flex gap-6 lg:gap-8 overflow-x-auto no-scrollbar justify-end w-full">
+            {instructors.map((person, idx) => (
+              <div 
+                key={idx}
+                className={`transition-all duration-500 cursor-pointer min-w-[130px] lg:min-w-[140px] ${idx === activeCourse ? 'opacity-100' : 'opacity-20 hover:opacity-50'}`}
+                onClick={() => setActiveCourse(idx)}
               >
-                <div className={`w-10 h-10 lg:w-14 lg:h-14 rounded-full overflow-hidden border-2 mb-2 transition-all ${idx === activeIdx ? 'border-blue-500 ring-4 ring-blue-50' : 'border-transparent group-hover:border-slate-300'}`}>
-                   <img src={member.img} alt={member.name} className="w-full h-full object-cover" />
+                <div className={`border-2 p-5 ${idx === activeCourse ? 'border-black' : 'border-transparent'}`}>
+                  <h4 className="text-xl font-bold leading-tight mb-1 text-black">{person.name}</h4>
+                  <p className="text-[9px] font-bold text-black/50 uppercase tracking-widest">{person.lessons}</p>
                 </div>
-                <span className={`text-[8px] lg:text-[10px] font-bold uppercase tracking-tighter whitespace-nowrap ${idx === activeIdx ? 'text-slate-900' : 'text-slate-400'}`}>
-                  {member.name}
-                </span>
-              </button>
+              </div>
             ))}
           </div>
         </div>
+
+        {/* Block 2: Featured Product (Flag Colors) */}
+        <div style={{ backgroundColor: products[activeCourse].color }} className="h-[300px] lg:h-[350px] flex items-center justify-center relative overflow-hidden group transition-colors duration-1000 shadow-lg">
+          <img 
+            key={`prod-${activeCourse}`}
+            src={products[activeCourse].img} 
+            alt="Feature Product" 
+            className="w-44 lg:w-60 rotate-[-15deg] drop-shadow-[0_20px_40px_rgba(0,0,0,0.3)] z-10 transition-all duration-700 group-hover:scale-110 animate-in fade-in zoom-in"
+          />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/10 font-black text-[90px] lg:text-[140px] pointer-events-none italic text-center leading-none uppercase">
+            {products[activeCourse].name}
+          </div>
+        </div>
+
+        {/* Block 3: News Feed */}
+        <div className={`p-10 lg:p-14 h-[350px] flex flex-col justify-between selection:bg-white selection:text-black shadow-2xl transition-colors duration-1000 ${activeCourse === 2 ? 'bg-zinc-900 text-white' : 'bg-black text-white'}`}>
+          <div key={`news-${activeCourse}`} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <p className="text-[9px] font-bold uppercase tracking-[0.6em] text-white/40 mb-4 lg:mb-8">In The News</p>
+            <h3 className="text-xl lg:text-3xl font-bold leading-tight max-w-xs cursor-pointer hover:text-blue-400 transition-colors">
+              {newsItems[activeCourse].title}
+            </h3>
+            <p className="text-[10px] text-white/50 mt-3 lg:mt-6 font-bold uppercase">{newsItems[activeCourse].date}</p>
+          </div>
+
+          <div className="flex justify-between items-end mt-8 lg:mt-0">
+            <a href="/" className="text-[10px] font-black uppercase tracking-widest border-b-2 border-white/30 pb-1 hover:border-white transition-all">
+              Read more
+            </a>
+            <div className="flex gap-2">
+              {[0, 1, 2].map((dot) => (
+                <div 
+                  key={dot}
+                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${activeCourse === dot ? 'bg-white w-4' : 'bg-white/30'}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
 
-      <style jsx global>{`
+      <style>{`
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-        @keyframes reveal-up {
-          from { transform: translateY(100%); opacity: 0; }
-          to { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes image-entry {
-          from { opacity: 0; transform: scale(0.95) translateX(20px); }
-          to { opacity: 1; transform: scale(1) translateX(0); }
-        }
-
-        .animate-reveal-up {
-          animation: reveal-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .animate-image-entry {
-          animation: image-entry 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
       `}</style>
     </section>
   );
