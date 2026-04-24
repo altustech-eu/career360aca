@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
 
 const Hero = () => {
@@ -7,12 +7,12 @@ const Hero = () => {
   // Carousel 1: Hero Contents
   const instructors = [
     { 
-      name: "Sam Burriss", 
-      lessons: "16 lessons", 
-      title: "B&W Photography", 
-      desc: "Sam Burriss teaches how to work with your subject in a minimalist, high-contrast editorial environment.",
-      portrait: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260",
-      bgColor: "#1A1A1A" // Slide 1: Deep Gray/Black
+      name: "Jordan Whitfield", 
+      lessons: "15 lessons", 
+      title: "Studio Portraits", 
+      desc: "Jordan Whitfield breaks down professional studio lighting and posing for high-end fashion magazines.",
+      portrait: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260",
+      bgColor: "#FACC15" // Slide 1: Yellow
     },
     { 
       name: "Noah Buscher", 
@@ -20,39 +20,46 @@ const Hero = () => {
       title: "Urban Lighting", 
       desc: "Master the art of cinematic cityscapes and low-light street photography with Noah Buscher.",
       portrait: "https://images.pexels.com/photos/1261427/pexels-photo-1261427.jpeg?auto=compress&cs=tinysrgb&w=1260",
-      bgColor: "#D91E1E" // Slide 2: German Red
+      bgColor: "#D91E1E" // Slide 2: Red
     },
     { 
-      name: "Jordan Whitfield", 
-      lessons: "15 lessons", 
-      title: "Studio Portraits", 
-      desc: "Jordan Whitfield breaks down professional studio lighting and posing for high-end fashion magazines.",
-      portrait: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260",
-      bgColor: "#FACC15" // Slide 3: German Yellow/Gold
+      name: "Sam Burriss", 
+      lessons: "16 lessons", 
+      title: "B&W Photography", 
+      desc: "Sam Burriss teaches how to work with your subject in a minimalist, high-contrast editorial environment.",
+      portrait: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260",
+      bgColor: "#1A1A1A" // Slide 3: Gray
     }
   ];
 
   // Carousel 2: Product Data
   const products = [
-    { name: "AIR", img: "https://images.pexels.com/photos/1464625/pexels-photo-1464625.jpeg?auto=compress&cs=tinysrgb&w=800", color: "#333333" },
+    { name: "MAX", img: "https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=800", color: "#FFCC00" },
     { name: "ZOOM", img: "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=800", color: "#FF0000" },
-    { name: "MAX", img: "https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=800", color: "#FFCC00" }
+    { name: "AIR", img: "https://images.pexels.com/photos/1464625/pexels-photo-1464625.jpeg?auto=compress&cs=tinysrgb&w=800", color: "#333333" }
   ];
 
   // Carousel 3: News Data
   const newsItems = [
-    { title: "Sport Footwear Studio Photography", date: "MAR 2, 2026" },
+    { title: "Future of Digital Art Direction", date: "MAY 20, 2026" },
     { title: "The Rise of Minimalist Aesthetics", date: "APR 15, 2026" },
-    { title: "Future of Digital Art Direction", date: "MAY 20, 2026" }
+    { title: "Sport Footwear Studio Photography", date: "MAR 2, 2026" }
   ];
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setActiveCourse((prev) => (prev + 1) % instructors.length);
-  };
+  }, [instructors.length]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     setActiveCourse((prev) => (prev - 1 + instructors.length) % instructors.length);
-  };
+  }, [instructors.length]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 5000); 
+    return () => clearInterval(interval);
+  }, [handleNext]);
 
   return (
     <section 
@@ -60,48 +67,49 @@ const Hero = () => {
       className="relative w-full h-auto lg:h-[950px] font-sans overflow-hidden flex flex-col transition-colors duration-1000 selection:bg-white selection:text-black"
     >
       
-      {/* 2. MAIN HERO SECTION (CAROUSEL 1) */}
+      {/* 2. MAIN HERO SECTION */}
       <div className="flex-grow grid grid-cols-1 lg:grid-cols-2 items-center px-6 lg:px-16 pt-32 lg:pt-16">
         
         {/* Left Side: Typography */}
         <div key={`text-${activeCourse}`} className="z-10 py-10 text-center lg:text-left lg:pr-20 animate-in fade-in slide-in-from-left-8 duration-700">
-          <h1 className={`text-5xl md:text-7xl lg:text-[100px] font-extralight mb-5 leading-[1] tracking-tighter ${activeCourse === 2 ? 'text-black' : 'text-white'}`}>
+          <h1 className={`text-5xl md:text-7xl lg:text-[100px] font-extralight mb-5 leading-[1] tracking-tighter ${activeCourse === 0 ? 'text-black' : 'text-white'}`}>
             {instructors[activeCourse].title.split(' ')[0]} <br className="hidden lg:block" /> {instructors[activeCourse].title.split(' ')[1]}
           </h1>
-          <p className={`text-base lg:text-lg font-medium mb-12 max-w-sm mx-auto lg:mx-0 ${activeCourse === 2 ? 'text-black/60' : 'text-white/60'}`}>
+          <p className={`text-base lg:text-lg font-medium mb-12 max-w-sm mx-auto lg:mx-0 ${activeCourse === 0 ? 'text-black/60' : 'text-white/60'}`}>
             {instructors[activeCourse].desc}
           </p>
-          <button className={`group inline-flex items-center gap-4 border rounded-full px-10 py-4 font-bold transition-all duration-300 ${activeCourse === 2 ? 'border-black text-black hover:bg-black hover:text-white' : 'border-white text-white hover:bg-white hover:text-black'}`}>
+          <button className={`group inline-flex items-center gap-4 rounded-full px-10 py-4 font-bold transition-all duration-300 border-0 ${activeCourse === 0 ? 'bg-black text-white hover:bg-zinc-800' : 'bg-white text-black hover:bg-zinc-200'}`}>
             <Play className="w-4 h-4 fill-current" />
             <span className="text-[11px] uppercase tracking-[0.25em]">Watch trailer</span>
           </button>
         </div>
 
-        {/* Right Side: Editorial Portrait (CAROUSEL 1 IMAGE) */}
+        {/* Right Side: Editorial Portrait */}
         <div className="h-[250px] lg:h-[450px] flex items-end justify-center relative mt-10 lg:mt-0 lg:ml-20">
           <div key={`img-${activeCourse}`} className="relative h-full w-full flex items-end justify-center animate-in fade-in zoom-in-95 duration-1000">
             <img 
               src={instructors[activeCourse].portrait} 
               alt="Lead Instructor" 
-              className={`h-full lg:h-[95%] w-auto object-contain grayscale opacity-90 contrast-125 mix-blend-multiply transition-all duration-1000 ${activeCourse === 2 ? 'brightness-100' : 'brightness-150'}`}
+              className={`h-full lg:h-[95%] w-auto object-contain grayscale opacity-90 contrast-125 mix-blend-multiply transition-all duration-1000 ${activeCourse === 0 ? 'brightness-100' : 'brightness-150'}`}
               style={{
                 maskImage: 'linear-gradient(to top, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%)',
                 WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%)'
               }}
             />
           </div>
-          <div className={`absolute left-10 top-1/2 w-48 h-px z-10 hidden xl:block ${activeCourse === 2 ? 'bg-black/10' : 'bg-white/10'}`} />
+          {/* REMOVED: THE ABSOLUTE LINE ELEMENT PREVIOUSLY LOCATED HERE */}
         </div>
       </div>
 
-      {/* 3. BENTO FOOTER */}
-      <div className={`grid grid-cols-1 lg:grid-cols-[1.3fr,1fr,1.3fr] h-auto w-full items-end border-t ${activeCourse === 2 ? 'border-black/5' : 'border-white/5'}`}>
+      {/* 3. BENTO FOOTER - ALL STROKES REMOVED */}
+      <div className={`grid grid-cols-1 lg:grid-cols-[1.3fr,1fr,1.3fr] h-auto w-full items-end`}>
         
-        <div className="bg-white flex items-center justify-end px-10 py-12 lg:py-0 h-full lg:h-[310px] relative border-b lg:border-b-0 border-black/5">
-          {/* Controls */}
-          <div className="absolute -top-10 right-0 bg-white px-6 py-3 flex gap-6 border border-black/5 shadow-sm z-20">
-            <ChevronLeft onClick={handlePrev} className="w-4 h-4 cursor-pointer text-black/20 hover:text-black transition-colors" />
-            <ChevronRight onClick={handleNext} className="w-4 h-4 cursor-pointer hover:text-black transition-colors" />
+        <div className="bg-white flex items-center justify-end px-10 py-12 lg:py-0 h-full lg:h-[310px] relative">
+          
+          {/* Controls - Borders removed */}
+          <div className="absolute -top-10 right-0 bg-white px-10 py-6 flex gap-6 shadow-2xl z-20">
+            <ChevronLeft onClick={handlePrev} className="w-5 h-5 cursor-pointer text-black/20 hover:text-black transition-colors" />
+            <ChevronRight onClick={handleNext} className="w-5 h-5 cursor-pointer hover:text-black transition-colors" />
           </div>
 
           <div className="flex gap-6 lg:gap-8 overflow-x-auto no-scrollbar justify-end w-full">
@@ -111,7 +119,8 @@ const Hero = () => {
                 className={`transition-all duration-500 cursor-pointer min-w-[130px] lg:min-w-[140px] ${idx === activeCourse ? 'opacity-100' : 'opacity-20 hover:opacity-50'}`}
                 onClick={() => setActiveCourse(idx)}
               >
-                <div className={`border-2 p-5 ${idx === activeCourse ? 'border-black' : 'border-transparent'}`}>
+                {/* Border-2 changed to border-0 */}
+                <div className={`p-5 ${idx === activeCourse ? 'bg-zinc-50' : 'bg-transparent'}`}>
                   <h4 className="text-xl font-bold leading-tight mb-1 text-black">{person.name}</h4>
                   <p className="text-[9px] font-bold text-black/50 uppercase tracking-widest">{person.lessons}</p>
                 </div>
@@ -120,7 +129,7 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Block 2: Featured Product (Flag Colors) */}
+        {/* Block 2: Featured Product - Strokes removed */}
         <div style={{ backgroundColor: products[activeCourse].color }} className="h-[300px] lg:h-[350px] flex items-center justify-center relative overflow-hidden group transition-colors duration-1000 shadow-lg">
           <img 
             key={`prod-${activeCourse}`}
@@ -133,8 +142,8 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Block 3: News Feed */}
-        <div className={`p-10 lg:p-14 h-[350px] flex flex-col justify-between selection:bg-white selection:text-black shadow-2xl transition-colors duration-1000 ${activeCourse === 2 ? 'bg-zinc-900 text-white' : 'bg-black text-white'}`}>
+        {/* Block 3: News Feed - Strokes removed */}
+        <div className={`p-10 lg:p-14 h-[350px] flex flex-col justify-between selection:bg-white selection:text-black shadow-2xl transition-colors duration-1000 ${activeCourse === 0 ? 'bg-zinc-900 text-white' : 'bg-black text-white'}`}>
           <div key={`news-${activeCourse}`} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             <p className="text-[9px] font-bold uppercase tracking-[0.6em] text-white/40 mb-4 lg:mb-8">In The News</p>
             <h3 className="text-xl lg:text-3xl font-bold leading-tight max-w-xs cursor-pointer hover:text-blue-400 transition-colors">
@@ -144,7 +153,8 @@ const Hero = () => {
           </div>
 
           <div className="flex justify-between items-end mt-8 lg:mt-0">
-            <a href="/" className="text-[10px] font-black uppercase tracking-widest border-b-2 border-white/30 pb-1 hover:border-white transition-all">
+            {/* Removed border-b-2 from "Read more" */}
+            <a href="/" className="text-[10px] font-black uppercase tracking-widest pb-1 hover:text-blue-400 transition-all">
               Read more
             </a>
             <div className="flex gap-2">

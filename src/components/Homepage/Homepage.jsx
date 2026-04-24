@@ -2,7 +2,7 @@ import React from 'react';
 import Navigation from './Navigation';
 import Hero from './Hero';
 import Infinityscroll from './infinityscrolling';
-import Services from './textsection';
+import Services from './Services';
 import About from './About';
 import Work from './CareerAdvice';
 import Testimonials from './Testimonials';
