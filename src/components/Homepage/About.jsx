@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Play} from 'lucide-react';
+import { ArrowUpRight, Play, Globe, Shield, Zap } from 'lucide-react';
+
+// --- IMPORT LOCAL ASSETS ---
+import LegacyImg from '../../assests/1920x700 Hero Banner.jpg';
+import TechImg from '../../assests/Ausbildung student-.jpg';
+import OpsImg from '../../assests/Nurses Prelimanary interview.jpg';
+import GlobalImg from '../../assests/Nurses with Trainer.jpg';
 
 const AboutUsSection = () => {
   const [hoveredIdx, setHoveredIdx] = useState(null);
@@ -10,28 +16,28 @@ const AboutUsSection = () => {
       id: 1,
       title: "Legacy & Vision",
       subtitle: "The Foundation",
-      img: "https://images.unsplash.com/photo-1514525253361-bee8718a7439?q=80&w=1000",
+      img: LegacyImg,
       color: "from-orange-600/40",
     },
     {
       id: 2,
       title: "Tech Ecosystem",
       subtitle: "MAX Innovation",
-      img: "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=800",
+      img: TechImg,
       color: "from-red-600/40",
     },
     {
       id: 3,
       title: "Core Operations",
       subtitle: "Digital Flow",
-      img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000",
+      img: OpsImg,
       color: "from-blue-600/40",
     },
     {
       id: 4,
       title: "Global Reach",
       subtitle: "Worldwide Network",
-      img: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=1000",
+      img: GlobalImg,
       color: "from-purple-600/40",
     }
   ];
@@ -41,7 +47,7 @@ const AboutUsSection = () => {
       
       {/* --- TOP BRAND INTRO SECTION --- */}
       <section className="max-w-[1400px] mx-auto px-8 pt-24 pb-16">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 text-left">
           <div className="max-w-2xl">
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
@@ -54,7 +60,7 @@ const AboutUsSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-4xl md:text-6xl font-light text-slate-900 tracking-tighter leading-[0.9] mb-8"
+              className="text-4xl md:text-6xl font-semibold text-slate-900 tracking-tighter leading-[0.9] mb-8"
             >
               We build the architecture of <span className="italic font-normal">modern careers.</span>
             </motion.h2>
@@ -62,7 +68,7 @@ const AboutUsSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-lg text-slate-500 font-light leading-relaxed"
+              className="text-lg text-slate-500 font-medium leading-relaxed"
             >
               Career360 Academy is more than a recruitment platform. We are a global intelligence 
               hub dedicated to bridging the gap between untapped talent and industry-leading 
@@ -70,7 +76,20 @@ const AboutUsSection = () => {
             </motion.p>
           </div>
 
-         
+          <div className="flex flex-col gap-6 border-l border-slate-100 pl-8 lg:mb-2">
+            <div className="flex items-center gap-4 text-slate-400">
+               <Globe size={18} className="text-blue-600" />
+               <span className="text-xs font-bold uppercase tracking-widest">Worldwide Operations</span>
+            </div>
+            <div className="flex items-center gap-4 text-slate-400">
+               <Shield size={18} className="text-blue-600" />
+               <span className="text-xs font-bold uppercase tracking-widest">Verified Placement System</span>
+            </div>
+            <div className="flex items-center gap-4 text-slate-400">
+               <Zap size={18} className="text-blue-600" />
+               <span className="text-xs font-bold uppercase tracking-widest">AI-Driven Skill Matching</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -87,7 +106,7 @@ const AboutUsSection = () => {
               filter: hoveredIdx !== null && hoveredIdx !== idx ? 'grayscale(100%) brightness(0.5)' : 'grayscale(0%) brightness(1)'
             }}
             transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-            className="relative h-full border-r border-white/5 group cursor-pointer overflow-hidden"
+            className="relative h-full group cursor-pointer overflow-hidden"
           >
             {/* Background Image */}
             <motion.img 
@@ -111,7 +130,7 @@ const AboutUsSection = () => {
                 <span className="text-[9px] font-black uppercase tracking-[0.4em] text-white/60 mb-2 block">
                   {panel.subtitle}
                 </span>
-                <h3 className="text-xl md:text-2xl font-light text-white tracking-tighter leading-none mb-4">
+                <h3 className="text-xl md:text-2xl font-bold text-white tracking-tighter leading-none mb-4">
                   {panel.title}
                 </h3>
                 
@@ -123,7 +142,7 @@ const AboutUsSection = () => {
                   }}
                   className="overflow-hidden"
                 >
-                  <p className="text-xs text-white/50 font-light mb-4 leading-relaxed max-w-[200px]">
+                  <p className="text-xs text-white/50 font-medium mb-4 leading-relaxed max-w-[200px]">
                     Exploring the intersection of technology and human potential within our {panel.subtitle.toLowerCase()}.
                   </p>
                   <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all">
@@ -133,7 +152,7 @@ const AboutUsSection = () => {
               </motion.div>
             </div>
 
-            {/* Play Indicator Indicator */}
+            {/* Play Indicator */}
             <div className="absolute top-8 right-8">
                <motion.div 
                  animate={{ opacity: hoveredIdx === idx ? 1 : 0.3, scale: hoveredIdx === idx ? 1 : 0.8 }}
