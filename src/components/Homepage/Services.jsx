@@ -53,7 +53,7 @@ export default function GermanyPathwaysUIKit() {
       heroTitle: "Jobseekers & Direct Employment",
       heroDesc: "Your Path to Work in Germany | Skilled & Technical",
       sideDesc: "Explore flexible immigration and employment options to start your career journey in Germany.",
-      filters: ['Overview', 'Opportunity Card', 'IT Jobs', 'Engineers', 'Finance']
+      filters: ['Overview', 'Opportunity Card', 'Job Seeker Visa', 'IT Jobs', 'Process']
     },
     { 
       name: 'Direct Employment', 
@@ -124,168 +124,179 @@ export default function GermanyPathwaysUIKit() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 p-4 lg:p-8 font-sans selection:bg-emerald-100">
-      <div className="mx-auto max-w-[1440px] bg-white overflow-hidden border border-slate-200">
+    <div className="min-h-screen bg-slate-50 p-2 lg:p-4 selection:bg-emerald-100 font-sans">
+      <div className="mx-auto max-w-full bg-white overflow-hidden border border-slate-200 shadow-sm">
         
         {/* 1. TOP GLOBAL TABS */}
         <div className="grid grid-cols-2 md:grid-cols-5 border-b border-slate-200">
           {tabs.map((tab, i) => (
             <button
               key={tab.name}
-              onClick={() => {
-                  setActiveTab(i);
-                  setActiveSubFilter('Overview'); 
-              }}
-              className={`flex flex-col items-center py-6 px-4 transition-all relative border-r border-slate-100 last:border-0 ${
+              onClick={() => { setActiveTab(i); setActiveSubFilter('Overview'); }}
+              className={`flex flex-col items-center py-4 px-2 transition-all relative border-r border-slate-100 last:border-0 ${
                 activeTab === i ? 'bg-white' : 'bg-[#fcfcfc] hover:bg-slate-50'
               }`}
             >
-              <div className={`p-3 mb-2 transition-all ${
-                activeTab === i ? tab.activeBg + ' text-white' : tab.bg + ' ' + tab.color
+              <div className={`p-2 mb-1.5 transition-all ${
+                activeTab === i ? tab.activeBg + ' text-white shadow-sm' : tab.bg + ' ' + tab.color
               }`}>
-                <Icon icon={tab.icon} className="text-xl" />
+                <Icon icon={tab.icon} className="text-lg" />
               </div>
-              <span className={`font-black text-[13px] uppercase tracking-tighter ${activeTab === i ? 'text-slate-900' : 'text-slate-500'}`}>{tab.name}</span>
-              <span className="text-[9px] uppercase tracking-widest font-bold opacity-40 mt-0.5">{tab.sub}</span>
-              {activeTab === i && <div className={`absolute top-0 left-0 w-full h-1 ${tab.activeBg}`} />}
+              <span className={`font-black text-[11px] uppercase tracking-tight ${activeTab === i ? 'text-slate-900' : 'text-slate-500'}`}>{tab.name}</span>
+              <span className="text-[8px] uppercase tracking-widest font-medium opacity-50">{tab.sub}</span>
+              {activeTab === i && <div className={`absolute top-0 left-0 w-full h-0.5 ${tab.activeBg}`} />}
             </button>
           ))}
         </div>
 
         <div className="flex flex-col lg:flex-row">
           {/* 2. LEFT SIDEBAR */}
-          <aside className="w-full lg:w-[320px] p-8 border-r border-slate-200 bg-[#fbfcfd]">
-            <div className="mb-10">
-              <div className={`w-14 h-14 ${tabs[activeTab].bg} ${tabs[activeTab].color} flex items-center justify-center mb-6 border border-slate-100 shadow-sm`}>
-                 <Icon icon={tabs[activeTab].icon} className="text-3xl" />
+          <aside className="w-full lg:w-[280px] p-6 border-r border-slate-200 bg-[#fbfcfd]">
+            <div className="mb-6">
+              <div className={`w-12 h-12 ${tabs[activeTab].bg} ${tabs[activeTab].color} flex items-center justify-center mb-4 border border-slate-100 shadow-xs`}>
+                 <Icon icon={tabs[activeTab].icon} className="text-2xl" />
               </div>
-              <h1 className="text-3xl font-black leading-[1] mb-3 tracking-tight text-slate-900 uppercase">
+              <h1 className="text-2xl font-medium leading-tight mb-2 tracking-tight text-slate-900 uppercase">
                 {tabs[activeTab].name} <br/> 
-                <span className="text-slate-400 font-normal lowercase">in Germany</span>
+                <span className="text-slate-400 font-light lowercase">in Germany</span>
               </h1>
-              <p className="text-[11px] font-black text-slate-500 uppercase tracking-widest mb-6">Learn. Earn. Build Your Future.</p>
-              <p className="text-slate-500 text-[13px] leading-relaxed mb-10">
-                {tabs[activeTab].sideDesc}
-              </p>
-
-              <div className="space-y-6">
-                {[
-                  { label: 'Earn While You Learn', icon: "solar:dollar-minimalistic-bold" },
-                  { label: 'No Tuition Fees', icon: "solar:shield-check-bold" },
-                  { label: 'High Demand Careers', icon: "solar:case-bold" },
-                  { label: 'Fast PR Pathway', icon: "solar:clock-circle-bold" },
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-4 group cursor-default">
-                    <div className={`${tabs[activeTab].bg} w-10 h-10 flex items-center justify-center border border-slate-100`}>
-                      <Icon icon={item.icon} className={`${tabs[activeTab].color} text-lg`} />
-                    </div>
-                    <span className="font-bold text-slate-700 text-xs uppercase tracking-tight">{item.label}</span>
-                  </div>
-                ))}
-              </div>
+              <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest mb-4">Learn. Earn. Build.</p>
+              <p className="text-slate-500 text-[12px] leading-snug mb-6 opacity-80">{tabs[activeTab].sideDesc}</p>
             </div>
-            <button className="mt-6 w-full py-4 border-2 border-slate-200 font-black flex items-center justify-center gap-3 transition-all uppercase text-[10px] tracking-widest hover:bg-slate-900 hover:text-white hover:border-slate-900">
-              <Icon icon="solar:download-bold" /> Download {tabs[activeTab].name} Guide
+            <button className="mt-4 w-full py-3 border border-slate-200 font-semibold flex items-center justify-center gap-2 transition-all uppercase text-[9px] tracking-widest hover:bg-slate-900 hover:text-white">
+              <Icon icon="solar:download-bold" className="text-xs" /> Guide Book
             </button>
           </aside>
 
           {/* 3. MAIN DASHBOARD */}
-          <main className="flex-grow p-8 lg:p-10">
-            {/* SUB-NAV */}
-            <div className="flex gap-1 mb-8 overflow-x-auto no-scrollbar border-b border-slate-100 pb-4">
+          <main className="flex-grow p-6 lg:p-8 border-r border-slate-200">
+            <div className="flex gap-1 mb-6 overflow-x-auto no-scrollbar border-b border-slate-100 pb-3">
               {tabs[activeTab].filters.map((t) => (
                 <button 
                   key={t} 
                   onClick={() => setActiveSubFilter(t)} 
-                  className={`px-5 py-2 text-[11px] font-black uppercase tracking-widest transition-all ${
-                  activeSubFilter === t ? `${tabs[activeTab].activeBg} text-white shadow-md` : 'text-slate-500 hover:bg-slate-50'
-                }`}>
+                  className={`px-4 py-1.5 text-[10px] font-semibold uppercase tracking-widest transition-all ${
+                    activeSubFilter === t ? `${tabs[activeTab].activeBg} text-white shadow-sm` : 'text-slate-500 hover:bg-slate-50'
+                  }`}
+                >
                   {t}
                 </button>
               ))}
             </div>
 
-            {/* HERO BANNER BLOCK */}
-            <div className="relative w-full h-[220px] bg-slate-100 mb-10 border border-slate-200 flex overflow-hidden">
-               <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent z-10 p-10 flex flex-col justify-center">
-                  <h2 className="text-2xl font-black text-slate-900 mb-2 uppercase">{tabs[activeTab].heroTitle}</h2>
-                  <p className={`${tabs[activeTab].color} font-bold text-sm mb-6 uppercase tracking-widest`}>{tabs[activeTab].heroDesc}</p>
-                  <div className="flex gap-8">
-                     {[
-                       {l: 'Earn Salary', i: "solar:wallet-bold"},
-                       {l: 'No Fees', i: "solar:hand-stars-bold"},
-                       {l: 'Job Security', i: "solar:shield-up-bold"}
-                     ].map((feat, i) => (
-                       <div key={i} className="flex items-center gap-2 text-[10px] font-black text-slate-500 uppercase">
-                          <Icon icon={feat.i} className="text-sm" />
-                          {feat.l}
-                       </div>
-                     ))}
-                  </div>
+            <div className="relative w-full h-[160px] bg-slate-100 mb-8 border border-slate-200 flex overflow-hidden">
+               <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent z-10 p-6 flex flex-col justify-center">
+                  <h2 className="text-xl font-medium text-slate-900 mb-1 uppercase tracking-tight">{tabs[activeTab].heroTitle}</h2>
+                  <p className={`${tabs[activeTab].color} font-semibold text-xs mb-4 uppercase tracking-widest opacity-90`}>{tabs[activeTab].heroDesc}</p>
                </div>
-               <img src="https://images.pexels.com/photos/1210273/pexels-photo-1210273.jpeg?auto=compress&cs=tinysrgb&w=1200" className="absolute right-0 top-0 h-full w-1/2 object-cover grayscale brightness-75" alt="Hero" />
+               <img src="https://images.pexels.com/photos/1210273/pexels-photo-1210273.jpeg?auto=compress&cs=tinysrgb&w=1200" className="absolute right-0 top-0 h-full w-1/2 object-cover grayscale brightness-90" alt="Hero" />
             </div>
 
-            <h3 className="text-xs font-black text-slate-900 uppercase tracking-widest mb-6 border-l-4 border-emerald-500 pl-3">
-                Popular {tabs[activeTab].name} Sectors
-            </h3>
+            <h3 className="text-[10px] font-semibold text-slate-900 uppercase tracking-widest mb-4 border-l-2 border-emerald-500 pl-2">Popular {tabs[activeTab].name} Sectors</h3>
 
-            {/* SECTOR CARDS */}
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-12 min-h-[400px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 mb-8">
               {filteredCards.length > 0 ? filteredCards.map((card) => (
-                <div key={card.id} className="bg-white border border-slate-200 group flex flex-col h-full shadow-sm hover:border-slate-400 transition-colors">
-                  <div className="relative h-44 overflow-hidden border-b border-slate-100">
-                    <img src={card.img} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt={card.title} />
-                    <div className={`absolute top-3 left-3 w-8 h-8 ${card.accent} flex items-center justify-center shadow-lg`}>
-                       <Icon icon={card.icon} className="text-white text-lg" />
+                <div key={card.id} className="bg-white border border-slate-200 group flex flex-col h-full shadow-xs hover:border-slate-400 transition-colors">
+                  <div className="relative h-32 overflow-hidden border-b border-slate-100">
+                    <img src={card.img} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale-[0.3]" alt={card.title} />
+                    <div className={`absolute top-2 left-2 w-6 h-6 ${card.accent} flex items-center justify-center shadow-md`}>
+                       <Icon icon={card.icon} className="text-white text-xs" />
                     </div>
                   </div>
-                  <div className="p-5 flex-grow">
-                    <h4 className="text-sm font-black text-slate-900 mb-1 uppercase tracking-tight">{card.id}. {card.title}</h4>
-                    <p className={`${card.accent.replace('bg-', 'text-')} text-[10px] font-bold mb-4 uppercase tracking-wide`}>{card.sub}</p>
-                    <ul className="space-y-2 mb-6">
+                  <div className="p-4 flex-grow">
+                    <h4 className="text-[12px] font-semibold text-slate-900 mb-0.5 uppercase tracking-tight">{card.id}. {card.title}</h4>
+                    <p className={`${card.accent.replace('bg-', 'text-')} text-[9px] font-semibold mb-3 uppercase tracking-wide`}>{card.sub}</p>
+                    <ul className="space-y-1.5 mb-4">
                       {card.points.map((p, i) => (
-                        <li key={i} className="text-[11px] text-slate-500 font-medium flex items-center gap-2">• {p}</li>
+                        <li key={i} className="text-[10px] text-slate-500 font-medium flex items-center gap-1.5 opacity-80">• {p}</li>
                       ))}
                     </ul>
-                    <div className="flex gap-2 mb-4">
-                      <div className="flex-1 bg-slate-50 border border-slate-100 p-2 text-center">
-                        <p className="text-[8px] font-black text-slate-400 uppercase mb-1">Min Level</p>
-                        <p className={`text-[10px] font-black ${tabs[activeTab].color}`}>{card.minLvl}</p>
+                    <div className="flex gap-2 mb-3">
+                      <div className="flex-1 bg-slate-50 border border-slate-100 p-1.5 text-center">
+                        <p className="text-[7px] font-semibold text-slate-400 uppercase mb-0.5 tracking-tighter">Min Level</p>
+                        <p className={`text-[9px] font-semibold ${tabs[activeTab].color}`}>{card.minLvl}</p>
                       </div>
-                      <div className="flex-1 bg-slate-50 border border-slate-100 p-2 text-center">
-                        <p className="text-[8px] font-black text-slate-400 uppercase mb-1">Rec.</p>
-                        <p className="text-[10px] font-black text-slate-600">{card.recLvl}</p>
+                      <div className="flex-1 bg-slate-50 border border-slate-100 p-1.5 text-center">
+                        <p className="text-[7px] font-semibold text-slate-400 uppercase mb-0.5 tracking-tighter">Rec.</p>
+                        <p className="text-[9px] font-black text-slate-600">{card.recLvl}</p>
                       </div>
                     </div>
-                    <button className={`w-full text-center text-[10px] font-black uppercase tracking-widest hover:underline flex items-center justify-center gap-2 py-2 border-t border-slate-50 mt-2 ${tabs[activeTab].color}`}>
-                      View Details <Icon icon="solar:arrow-right-bold" />
+                    <button className={`w-full text-center text-[9px] font-semibold uppercase tracking-widest hover:underline flex items-center justify-center gap-1.5 py-1.5 border-t border-slate-50 mt-1 ${tabs[activeTab].color}`}>
+                      Details <Icon icon="solar:arrow-right-bold" className="text-[10px]" />
                     </button>
                   </div>
                 </div>
               )) : (
-                <div className="col-span-full flex items-center justify-center text-slate-400 text-sm font-bold uppercase tracking-widest py-20 border-2 border-dashed border-slate-100">
+                <div className="col-span-full flex items-center justify-center text-slate-400 text-[10px] font-semibold uppercase tracking-widest py-12 border border-dashed border-slate-100">
                     Coming Soon for {activeSubFilter}
                 </div>
               )}
             </div>
 
-            {/* BOTTOM QUICK GUIDE */}
-            <div className="bg-[#fcfcfc] p-6 border border-slate-200">
-               <div className="mb-6 flex justify-between items-center border-b border-slate-100 pb-3">
-                 <h3 className="text-[11px] font-black text-slate-900 uppercase tracking-widest">Quick Guide: German Language Levels</h3>
-                 <span className="text-[9px] font-black text-slate-400 uppercase">CEFR Standard</span>
+            <div className="bg-[#fcfcfc] p-4 border border-slate-200">
+               <div className="mb-4 flex justify-between items-center border-b border-slate-100 pb-2">
+                 <h3 className="text-[10px] font-semibold text-slate-900 uppercase tracking-widest">Quick Guide: Language Levels</h3>
+                 <span className="text-[8px] font-semibold text-slate-400 uppercase">CEFR</span>
                </div>
-               <div className="flex flex-wrap gap-2">
+               <div className="flex flex-wrap gap-1.5 justify-center md:justify-start">
                   {langLevels.map((item, idx) => (
-                    <div key={idx} className={`${item.bg} w-[75px] h-[65px] flex flex-col items-center justify-center shadow-sm border border-black/5 hover:brightness-95 cursor-pointer`}>
-                       <span className="text-xl font-bold text-black leading-none">{item.lvl}</span>
-                       <span className="text-[8px] font-black text-black/60 uppercase tracking-tighter mt-1">{item.sub}</span>
+                    <div key={idx} className={`${item.bg} w-[65px] h-[55px] flex flex-col items-center justify-center shadow-xs border border-black/5 hover:brightness-95 cursor-pointer`}>
+                       <span className="text-lg font-bold text-black leading-none tracking-tighter">{item.lvl}</span>
+                       <span className="text-[7px] font-semibold text-black/60 uppercase tracking-tighter mt-0.5">{item.sub}</span>
                     </div>
                   ))}
                </div>
             </div>
           </main>
+
+          {/* 4. NEW RIGHT SIDEBAR - Section Blocks Up and Down */}
+          <aside className="w-full lg:w-[300px] p-6 bg-[#fbfcfd] flex flex-col gap-6">
+            {/* Top Right Block: Strategic Insights */}
+            <div className="bg-white border border-slate-200 p-5 shadow-xs">
+              <h3 className="text-[10px] font-black text-slate-900 uppercase tracking-[0.2em] mb-4 border-b border-slate-100 pb-2 flex items-center gap-2">
+                <Icon icon="solar:star-fall-bold" className="text-amber-500" /> Strategic Insight
+              </h3>
+              <div className="space-y-4">
+                 <div className="p-3 bg-slate-50 border-l-4 border-emerald-500">
+                    <p className="text-[11px] font-bold text-slate-800 leading-snug">Current Demand: Germany needs 400,000 skilled workers annually across all sectors.</p>
+                 </div>
+                 <p className="text-[10px] text-slate-500 leading-relaxed">
+                   Healthcare and Engineering remain the most stable pathways for long-term residency.
+                 </p>
+                 <ul className="space-y-2">
+                    {['Visa Processing: 4-8 Weeks', 'Stipend Average: €1,100', 'Job Placement Rate: 94%'].map((item, i) => (
+                      <li key={i} className="text-[9px] font-black text-slate-400 uppercase flex items-center gap-2">
+                        <Icon icon="solar:check-read-bold" className="text-emerald-500" /> {item}
+                      </li>
+                    ))}
+                 </ul>
+              </div>
+            </div>
+
+            {/* Bottom Right Block: Support & Contact */}
+            <div className="bg-white border border-slate-200 p-5 shadow-xs">
+              <h3 className="text-[10px] font-black text-slate-900 uppercase tracking-[0.2em] mb-4 border-b border-slate-100 pb-2 flex items-center gap-2">
+                <Icon icon="solar:chat-round-line-bold" className="text-indigo-600" /> Consultation
+              </h3>
+              <div className="space-y-4">
+                 <p className="text-[11px] text-slate-600 leading-relaxed">
+                   Need personalized guidance for your Germany pathway? Speak to our experts.
+                 </p>
+                 <button className="w-full py-3 bg-indigo-600 text-white text-[9px] font-black uppercase tracking-widest hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2">
+                   Book Free Session <Icon icon="solar:arrow-right-up-bold" className="text-xs" />
+                 </button>
+                 <div className="pt-2 flex items-center gap-3">
+                    <div className="w-8 h-8 bg-indigo-50 flex items-center justify-center text-indigo-600 border border-indigo-100">
+                       <Icon icon="solar:phone-bold" />
+                    </div>
+                    <div>
+                       <p className="text-[8px] font-bold text-slate-400 uppercase">Support Line</p>
+                       <p className="text-[10px] font-black text-slate-800">+49 123 456 789</p>
+                    </div>
+                 </div>
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
     </div>
