@@ -46,51 +46,51 @@ const AcademyHeader = () => {
 
   return (
     <header 
-      className={`sticky top-0 w-full z-50 transition-all duration-500 font-sans ${
-        isScrolled ? 'bg-[#0e63ed] shadow-2xl py-2' : 'bg-white border-b border-gray-100 py-3'
+      className={`sticky top-0 w-full z-50 transition-all duration-500 font-sans border-b ${
+        isScrolled 
+          ? 'bg-[#050505] border-white/5 py-3' 
+          : 'bg-[#0A0A0A] border-white/5 py-4'
       }`}
     >
       <div className="max-w-[1700px] mx-auto flex items-center justify-between px-6 md:px-12">
         
         {/* Left Section: Logo */}
-        <div className="flex items-center gap-2 shrink-0">
-          <div className={`transition-colors duration-300 ${isScrolled ? 'text-white' : 'text-[#0e63ed]'}`}>
-            <BiBookOpen className="h-8 w-8" />
+        <a href="/" className="flex items-center gap-3 shrink-0 group cursor-pointer">
+          <div className="text-[rgb(231,191,60)] transition-transform duration-500 group-hover:scale-110">
+            <BiBookOpen className="h-7 w-7" />
           </div>
-          <div className={`flex flex-col leading-none transition-colors duration-300 ${isScrolled ? 'text-white' : 'text-slate-900'}`}>
-            <span className="text-xl font-light tracking-tighter uppercase">Career360</span>
-            <span className="text-[9px] font-bold tracking-[0.3em] uppercase opacity-70">Academy</span>
+          <div className="flex flex-col leading-none text-white">
+            <span className="text-[15px] font-black tracking-widest uppercase">Career360</span>
+            <span className="text-[8px] font-bold tracking-[0.25em] text-[rgb(231,191,60)] opacity-80 uppercase mt-0.5">
+              Academy
+            </span>
           </div>
-        </div>
+        </a>
 
         {/* Center Section: Main Navigation */}
-        <nav className="hidden xl:flex items-center gap-6">
+        <nav className="hidden xl:flex items-center gap-8">
           {navLinks.map((item) => (
-            <div key={item.name} className="group relative py-2">
+            <div key={item.name} className="group relative py-3">
               <a 
                 href={item.link} 
-                className={`flex items-center gap-1 text-[13px] font-medium tracking-tight transition-all duration-300 ${
-                  isScrolled ? 'text-white/80 hover:text-white' : 'text-slate-600 hover:text-[#0e63ed]'
-                }`}
+                className="flex items-center gap-1 text-[10px] font-black tracking-[0.2em] text-white/70 uppercase transition-colors duration-300 hover:text-[rgb(231,191,60)]"
               >
                 {item.name}
-                {item.dropdown && <BiChevronDown className="opacity-50 group-hover:rotate-180 transition-transform" />}
+                {item.dropdown && <BiChevronDown className="opacity-50 group-hover:rotate-180 transition-transform duration-300 text-[rgb(231,191,60)]" />}
               </a>
 
               {/* Dropdown Menu */}
               {item.dropdown && (
-                <div className="absolute top-full left-0 mt-2 w-56 bg-white border border-gray-100 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                  <div className="py-2">
-                    {item.dropdown.map((sub) => (
-                      <a 
-                        key={sub} 
-                        href="#" 
-                        className="block px-4 py-2 text-[12px] text-slate-600 hover:bg-slate-50 hover:text-[#0e63ed] transition-colors"
-                      >
-                        {sub}
-                      </a>
-                    ))}
-                  </div>
+                <div className="absolute top-full left-0 mt-3 w-64 bg-[#111111] border border-white/10 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-3 group-hover:translate-y-0 rounded-2xl p-2 z-50">
+                  {item.dropdown.map((sub) => (
+                    <button 
+                      key={sub} 
+                      onClick={() => window.location.href = '#'} 
+                      className="w-full text-left px-4 py-3 rounded-xl text-[10px] text-white/60 font-medium tracking-wider hover:bg-[#A3E635]/10 hover:text-[rgb(231,191,60)] transition-all duration-300 block"
+                    >
+                      {sub}
+                    </button>
+                  ))}
                 </div>
               )}
             </div>
@@ -100,33 +100,28 @@ const AcademyHeader = () => {
         {/* Right Section: Actions */}
         <div className="flex items-center gap-6 shrink-0">
           {/* Language Toggle */}
-          <button className={`text-[11px] font-bold uppercase tracking-widest ${isScrolled ? 'text-white/70' : 'text-slate-400'}`}>
+          <button className="text-[9px] font-black uppercase tracking-[0.2em] text-white/50 hover:text-[rgb(231,191,60)] transition-colors duration-300">
             En
           </button>
 
           <a 
             href="/login" 
-            className={`text-[11px] font-semibold uppercase tracking-widest transition-colors ${
-              isScrolled ? 'text-white/70 hover:text-white' : 'text-slate-400 hover:text-slate-900'
-            }`}
+            className="text-[9px] font-black uppercase tracking-[0.2em] text-white/60 hover:text-[rgb(231,191,60)] transition-colors duration-300"
           >
             Log In
           </a>
 
-          {/* CTA: Join Live Class emphasis */}
-          <button className={`group relative flex items-center gap-3 rounded-full border px-6 py-2 text-[11px] font-semibold tracking-widest uppercase transition-all duration-500 ${
-            isScrolled 
-              ? 'bg-white text-[#0e63ed] border-white' 
-              : 'bg-[#0e63ed] text-white border-[#0e63ed] hover:bg-slate-900'
-          }`}>
+          {/* CTA Button */}
+          <button className="group relative flex items-center gap-2 rounded-full border border-white/10 px-6 py-2.5 text-[9px] font-black tracking-[0.2em] uppercase text-white bg-transparent hover:border-[rgb(231,191,60)] hover:bg-[rgb(231,191,60)] hover:text-black transition-all duration-500">
             <span>Live Classes</span>
-            <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
           </button>
 
-          <a href="/profile" className={`transition-all duration-300 ${
-            isScrolled ? 'text-white hover:scale-110' : 'text-slate-300 hover:text-[#0e63ed]'
-          }`}>
-            <HiOutlineUserCircle className="h-7 w-7 stroke-1" />
+          <a 
+            href="/profile" 
+            className="text-white/70 hover:text-[rgb(231,191,60)] transition-all duration-300"
+          >
+            <HiOutlineUserCircle className="h-6 w-6 stroke-[1.5]" />
           </a>
         </div>
       </div>

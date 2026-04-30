@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Play, Globe, Shield, Zap } from 'lucide-react';
+import { ArrowUpRight, Play } from 'lucide-react';
 
 // --- IMPORT LOCAL ASSETS ---
 import LegacyImg from '../../assests/1920x700 Hero Banner.jpg';
@@ -18,27 +18,31 @@ const AboutUsSection = () => {
       subtitle: "The Foundation",
       img: LegacyImg,
       color: "from-orange-600/40",
+      desc: "Founded with a mission to make Germany careers accessible, Career360 Academy has already guided 500+ learners toward German proficiency and international success. Our vision is to become India’s most trusted Germany career partner."
     },
     {
       id: 2,
-      title: "Tech Ecosystem",
-      subtitle: "MAX Innovation",
+      title: "German Training",
+      subtitle: "Core Strength",
       img: TechImg,
       color: "from-red-600/40",
+      desc: "Our German training is the heart of everything we do. From A1 to C1, we offer structured courses, exam preparation for Goethe & TELC, and job-specific modules for healthcare and vocational roles. Learn with native-level experts and interactive methods."
     },
     {
       id: 3,
-      title: "Core Operations",
-      subtitle: "Digital Flow",
+      title: "Ausbildung & Healthcare",
+      subtitle: "Career Pathways",
       img: OpsImg,
       color: "from-blue-600/40",
+      desc: "We provide complete assistance for Germany’s dual vocational training system. From profile matching to interview prep and visa guidance, we help you secure paid training positions in nursing, IT, hospitality, and more – with integrated German training up to B2."
     },
     {
       id: 4,
-      title: "Global Reach",
+      title: "Study in Germany",
       subtitle: "Worldwide Network",
       img: GlobalImg,
       color: "from-purple-600/40",
+      desc: "Dreaming of a tuition-free German university degree? We help you with university selection, application, APS, visa, and accommodation. Our network spans 30+ German partner universities and 50+ Ausbildung employers across Germany."
     }
   ];
 
@@ -46,15 +50,15 @@ const AboutUsSection = () => {
     <div className="bg-white min-h-screen font-sans overflow-hidden">
       
       {/* --- TOP BRAND INTRO SECTION --- */}
-      <section className="max-w-[1400px] mx-auto px-8 pt-24 pb-16">
+      <section className="max-w-[1600px] mx-auto px-8 pt-24 pb-16">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 text-left">
-          <div className="max-w-2xl">
+          <div className="max-w-4xl">
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               className="text-[10px] font-black uppercase tracking-[0.5em] text-blue-600 mb-6 block"
             >
-              Established 2026
+              Est. 2024
             </motion.span>
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
@@ -62,7 +66,7 @@ const AboutUsSection = () => {
               transition={{ delay: 0.1 }}
               className="text-4xl md:text-6xl font-semibold text-slate-900 tracking-tighter leading-[0.9] mb-8"
             >
-              We build the architecture of <span className="italic font-normal">modern careers.</span>
+              We build the bridge between ambition and <span className="italic font-normal">opportunity in Germany.</span>
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0 }}
@@ -70,26 +74,16 @@ const AboutUsSection = () => {
               transition={{ delay: 0.2 }}
               className="text-lg text-slate-500 font-medium leading-relaxed"
             >
-              Career360 Academy is more than a recruitment platform. We are a global intelligence 
-              hub dedicated to bridging the gap between untapped talent and industry-leading 
-              enterprises through data-driven matching and specialized training.
+              Career360 Academy is more than a training institute. We are a complete Germany career hub 
+              dedicated to helping Indian students and professionals achieve their dreams through expert 
+              German language training, end-to-end Ausbildung support, specialized healthcare pathways, 
+              and transparent study abroad guidance. Our data-driven approach ensures that every learner 
+              is matched with the right opportunity in Germany.
             </motion.p>
           </div>
 
-          <div className="flex flex-col gap-6 border-l border-slate-100 pl-8 lg:mb-2">
-            <div className="flex items-center gap-4 text-slate-400">
-               <Globe size={18} className="text-blue-600" />
-               <span className="text-xs font-bold uppercase tracking-widest">Worldwide Operations</span>
-            </div>
-            <div className="flex items-center gap-4 text-slate-400">
-               <Shield size={18} className="text-blue-600" />
-               <span className="text-xs font-bold uppercase tracking-widest">Verified Placement System</span>
-            </div>
-            <div className="flex items-center gap-4 text-slate-400">
-               <Zap size={18} className="text-blue-600" />
-               <span className="text-xs font-bold uppercase tracking-widest">AI-Driven Skill Matching</span>
-            </div>
-          </div>
+        
+    
         </div>
       </section>
 
@@ -142,24 +136,24 @@ const AboutUsSection = () => {
                   }}
                   className="overflow-hidden"
                 >
-                  <p className="text-xs text-white/50 font-medium mb-4 leading-relaxed max-w-[200px]">
-                    Exploring the intersection of technology and human potential within our {panel.subtitle.toLowerCase()}.
+                  <p className="text-xs text-white/60 font-medium mb-4 leading-relaxed max-w-[320px]">
+                    {panel.desc}
                   </p>
                   <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all">
                     <ArrowUpRight size={14} />
                   </div>
                 </motion.div>
               </motion.div>
-            </div>
 
-            {/* Play Indicator */}
-            <div className="absolute top-8 right-8">
-               <motion.div 
-                 animate={{ opacity: hoveredIdx === idx ? 1 : 0.3, scale: hoveredIdx === idx ? 1 : 0.8 }}
-                 className="p-1.5 border border-white/20 rounded-full text-white"
-               >
-                 <Play size={10} fill="currentColor" />
-               </motion.div>
+              {/* Play Indicator */}
+              <div className="absolute top-8 right-8">
+                 <motion.div 
+                   animate={{ opacity: hoveredIdx === idx ? 1 : 0.3, scale: hoveredIdx === idx ? 1 : 0.8 }}
+                   className="p-1.5 border border-white/20 rounded-full text-white"
+                 >
+                   <Play size={10} fill="currentColor" />
+                 </motion.div>
+              </div>
             </div>
           </motion.div>
         ))}

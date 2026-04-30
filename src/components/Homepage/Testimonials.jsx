@@ -5,36 +5,36 @@ import { Play, Quote, Activity, Globe, Users } from "lucide-react";
 const mainTestimonials = [
   {
     id: "v1",
-    name: "David Chen",
-    role: "CEO, TechStart Inc.",
+    name: "Priya Sharma",
+    role: "Ausbildung Candidate – Nursing, Berlin",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     thumbnail: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800",
-    quote: "MUHA transformed our digital presence completely. Their attention to detail exceeded our expectations.",
-    stat: "250%",
-    statLabel: "Conversion Reach",
-    subStat: "31 High-End Placements"
+    quote: "Career360 Academy changed my life. Their German training was so practical that I cleared my B2 exam in just 6 months and got a nursing Ausbildung position in Berlin.",
+    stat: "500+",
+    statLabel: "Students Placed",
+    subStat: "92% Success Rate"
   },
   {
     id: "v2",
-    name: "Sarah Johnson",
-    role: "Marketing Director",
+    name: "Arjun Mehta",
+    role: "Healthcare Professional, Munich",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     thumbnail: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=800",
-    quote: "Working with MUHA was a game-changer. They delivered a stunning website that perfectly captured our identity.",
-    stat: "1.2M",
-    statLabel: "Brand Impressions",
-    subStat: "#1 Top Rated Agency"
+    quote: "The Medical German module was a game-changer. I passed my Kenntnisprüfung on the first attempt and now work at a top hospital in Munich. Thank you, Career360!",
+    stat: "30+",
+    statLabel: "Partner Hospitals",
+    subStat: "100% Job Assistance"
   },
   {
     id: "v3",
-    name: "Michael Rodriguez",
-    role: "Founder, FinanceHub",
+    name: "Neha Verma",
+    role: "Masters Student, TU Berlin",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     thumbnail: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=800",
-    quote: "The SEO and digital marketing services provided by MUHA have been phenomenal. Traffic is up 400%.",
-    stat: "400%",
-    statLabel: "Traffic Growth",
-    subStat: "12,300+ New Leads"
+    quote: "From university selection to visa approval – Career360 guided me at every step. Their German training helped me adapt quickly. Now I’m living my dream in Germany.",
+    stat: "50+",
+    statLabel: "Partner Universities",
+    subStat: "0 Tuition Fees*"
   }
 ];
 
@@ -62,9 +62,14 @@ export default function VideoTestimonialsRedesign() {
                <div>
                   <div className="flex items-center gap-3 mb-4">
                     <div className="h-[1px] w-8 bg-cyan-500"></div>
-                    <span className="text-cyan-400 font-bold text-[10px] uppercase tracking-[0.4em]">Impact Analysis</span>
+                    <span className="text-cyan-400 font-bold text-[10px] uppercase tracking-[0.4em]">Success Stories</span>
                   </div>
-                  <h2 className="text-4xl md:text-6xl font-extralight tracking-tighter uppercase leading-none">Performance <br /> Metrics</h2>
+                  <h2 className="text-4xl md:text-6xl font-extralight tracking-tighter uppercase leading-none">
+                    Real Results. Real Dreams.
+                  </h2>
+                  <p className="text-white/40 text-xs mt-2 uppercase tracking-wider">
+                    From German learners to Germany achievers
+                  </p>
                </div>
             </div>
             <div className="flex gap-4">
@@ -85,7 +90,7 @@ export default function VideoTestimonialsRedesign() {
                >
                  <div className="absolute top-0 right-0 w-24 h-[1px] bg-white/20" />
                  <div className="relative z-10 text-right">
-                    <span className="text-[10px] font-black text-cyan-500/50 uppercase tracking-[0.5em] block mb-4">Estimated Outcome</span>
+                    <span className="text-[10px] font-black text-cyan-500/50 uppercase tracking-[0.5em] block mb-4">Learner Outcome</span>
                     <h1 className="text-7xl md:text-9xl font-extralight tracking-tighter text-white mb-2 leading-none">{active.stat}</h1>
                     <p className="text-[11px] font-bold text-white/40 uppercase tracking-[0.3em]">{active.statLabel}</p>
                  </div>
@@ -116,17 +121,17 @@ export default function VideoTestimonialsRedesign() {
 
             {/* --- BOTTOM ROW --- */}
 
-            {/* 3. BOTTOM LEFT BLOCK: SECONDARY STAT (Spans 3 columns, starts at col 5 to align with design) */}
+            {/* 3. BOTTOM LEFT BLOCK: SECONDARY STAT (Spans 3 columns) */}
             <div className="lg:col-start-5 lg:col-span-3">
                <motion.div 
                 key={`substat-${activeIndex}`}
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
                 className="border border-cyan-400/30 p-10 flex flex-col justify-center text-center bg-black/40 backdrop-blur-sm min-h-[250px]"
                >
-                 <h3 className="text-5xl font-extralight text-cyan-400 mb-4 tracking-tighter italic">{active.subStat.split(' ')[0]}</h3>
-                 <p className="text-[10px] font-bold text-white/50 uppercase tracking-[0.2em] leading-relaxed">
-                   {active.subStat.split(' ').slice(1).join(' ')}
-                 </p>
+                  <h3 className="text-5xl font-extralight text-cyan-400 mb-4 tracking-tighter italic">{active.subStat.split(' ')[0]}</h3>
+                  <p className="text-[10px] font-bold text-white/50 uppercase tracking-[0.2em] leading-relaxed">
+                    {active.subStat.split(' ').slice(1).join(' ')}
+                  </p>
                </motion.div>
             </div>
 
@@ -136,10 +141,10 @@ export default function VideoTestimonialsRedesign() {
                 initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
                 className="bg-white/5 border border-white/5 p-10 flex flex-col justify-center min-h-[250px]"
                >
-                  <h4 className="text-4xl font-extralight tracking-tighter text-white mb-2 leading-none">12.3M+</h4>
-                  <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.3em]">Global Digital Impressions</p>
+                  <h4 className="text-4xl font-extralight tracking-tighter text-white mb-2 leading-none">10,000+</h4>
+                  <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.3em]">Active Learners</p>
                   <div className="h-px w-full bg-white/5 my-6" />
-                  <p className="text-[11px] font-light text-white/50 leading-relaxed">Market expansion achieved across all primary European corridors.</p>
+                  <p className="text-[11px] font-light text-white/50 leading-relaxed">And growing every day. Join thousands of successful students who trusted Career360 Academy for their Germany journey.</p>
                </motion.div>
             </div>
 
@@ -149,7 +154,7 @@ export default function VideoTestimonialsRedesign() {
           <div className="mt-20 flex flex-col md:flex-row gap-4 items-center justify-between border-t border-white/5 pt-12">
             <div className="flex items-center gap-6">
                <Users className="text-white/20" size={24} />
-               <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.2em]">Select Case Study</p>
+               <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.2em]">Student Success Stories</p>
             </div>
             <div className="flex gap-4 overflow-x-auto no-scrollbar max-w-full pb-4">
                {mainTestimonials.map((item, idx) => (
@@ -158,7 +163,7 @@ export default function VideoTestimonialsRedesign() {
                   onClick={() => setActiveIndex(idx)}
                   className={`px-8 py-4 border rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-500 whitespace-nowrap ${activeIndex === idx ? 'border-cyan-400 text-cyan-400 bg-cyan-400/5' : 'border-white/5 text-white/40 hover:border-white/20'}`}
                  >
-                   {item.name}
+                   {item.name} - {item.role.split(' – ').pop()}
                  </button>
                ))}
             </div>

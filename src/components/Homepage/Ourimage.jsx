@@ -51,16 +51,16 @@ export default function OurPeople() {
   ];
 
   return (
-    <section className="bg-[#0A0A0A] py-16 font-sans">
+    <section className="bg-[#0A0A0A] py-16 font-sans select-none">
       <div className="max-w-full mx-auto px-4 lg:px-12">
         
         {/* HEADER SECTION */}
-        <div className="flex flex-col items-center text-center mb-16 max-w-xl mx-auto">
-           <h2 className="text-[#A3E635] text-3xl font-black uppercase tracking-[0.2em] mb-6">
-             Our People
+        <div className="flex flex-col items-center text-center mb-16 max-w-4xl mx-auto">
+           <h2 className="text-[#A3E635] text-4xl md:text-5xl font-black uppercase tracking-[0.2em] mb-6">
+             Our Success Stories
            </h2>
-           <p className="text-gray-400 text-xs md:text-sm leading-relaxed font-medium">
-             Read the stories of the people of Career360. Or just put a face with the person you’ve been emailing with.
+           <p className="text-gray-400 text-xs md:text-sm leading-relaxed max-w-3xl mx-auto font-medium tracking-wide">
+             Meet the students and professionals who turned their German dreams into reality with Career360 Academy. From mastering German to securing Ausbildung, healthcare jobs, and university seats – each face has a journey worth celebrating.
            </p>
         </div>
 
@@ -77,21 +77,28 @@ export default function OurPeople() {
                 className="w-full h-full object-cover transition-all duration-700 filter grayscale-[0.2] contrast-125 brightness-90 group-hover:grayscale-0 group-hover:scale-110 group-hover:brightness-100"
               />
               
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-4">
-                 <div className="h-0.5 w-8 bg-[#A3E635] mb-2 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
-                 <span className="text-white text-[10px] font-black uppercase tracking-widest leading-none">
-                   View Profile
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-5">
+                 <div className="h-0.5 w-8 bg-[#A3E635] mb-3 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+                 <span className="text-white text-[10px] font-black uppercase tracking-widest leading-none mb-1">
+                   Germany Bound
+                 </span>
+                 <span className="text-zinc-400 text-[8px] font-medium tracking-wider">
+                   View Journey
                  </span>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-16 flex justify-center">
-           <button className="flex items-center gap-3 border border-zinc-800 px-10 py-4 text-white text-[10px] font-black uppercase tracking-[0.25em] hover:bg-white hover:text-black transition-all duration-300">
-             Join Our Global Team
+        {/* BOTTOM CTA */}
+        <div className="mt-16 flex flex-col items-center gap-3 justify-center text-center">
+           <button className="flex items-center gap-3 border border-zinc-800 px-12 py-5 text-white text-[10px] font-black uppercase tracking-[0.25em] hover:bg-white hover:text-black transition-all duration-500">
+             Start Your Germany Journey Today
              <Icon icon="solar:arrow-right-up-bold" className="text-sm" />
            </button>
+           <p className="text-zinc-500 text-[9px] uppercase tracking-widest font-semibold mt-2">
+             Join 500+ Successful Students
+           </p>
         </div>
 
       </div>

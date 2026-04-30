@@ -8,28 +8,31 @@ import trainer3 from "../../assests/Trainers/Trainer4.webp";
 
 const instructors = [
   { 
-    name: "Jordan Whitfield", 
+    name: "German Team", 
     lessons: "15 lessons", 
-    title: "Studio Portraits", 
-    desc: "Jordan Whitfield breaks down professional studio lighting and posing for high-end fashion magazines.",
+    title: "Master German Live Your Dream in Germany",
+    desc: "Expert-led German courses from A1 to C1. Goethe & TELC exam prep, interview training, and job-ready language skills. Your first step toward success in Germany starts here.",
     portrait: trainer1,
-    bgColor: "#FACC15" 
+    bgColor: "#FACC15",
+    btnText: "Start Learning German →"
   },
   { 
-    name: "Noah Buscher", 
+    name: "Healthcare Team", 
     lessons: "12 lessons", 
-    title: "Urban Lighting", 
-    desc: "Master the art of cinematic cityscapes and low-light street photography with Noah Buscher.",
+    title: "Medical German For Healthcare Professionals", 
+    desc: "Specialized German training for nurses, doctors, and caregivers. Master medical terminology, patient communication, and clear the Kenntnisprüfung with confidence.",
     portrait: trainer2,
-    bgColor: "#D91E1E" 
+    bgColor: "#D91E1E",
+    btnText: "Explore Healthcare Track →"
   },
   { 
-    name: "Sam Burriss", 
+    name: "Ausbildung Team", 
     lessons: "16 lessons", 
-    title: "B&W Photography", 
-    desc: "Sam Burriss teaches how to work with your subject in a minimalist, high-contrast editorial environment.",
+    title: "Ausbildung & Study Your Complete Germany Guide", 
+    desc: "From vocational training to tuition-free university degrees – we handle profile matching, visa support, and integrated German training up to B1/B2.",
     portrait: trainer3,
-    bgColor: "#1A1A1A" 
+    bgColor: "#1A1A1A",
+    btnText: "Plan Your Germany Journey →"
   }
 ];
 
@@ -63,6 +66,16 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, [handleNext]);
 
+  const getTitleLines = (title) => {
+    const words = title.split(" ");
+    return {
+      line1: words.slice(0, 3).join(" "),
+      line2: words.slice(3).join(" ")
+    };
+  };
+
+  const titleObj = getTitleLines(instructors[activeCourse].title);
+
   return (
     <section 
       style={{ backgroundColor: instructors[activeCourse].bgColor }}
@@ -72,15 +85,15 @@ const Hero = () => {
       {/* MAIN HERO CONTENT */}
       <div className="flex-grow grid grid-cols-1 lg:grid-cols-2 items-center px-6 lg:px-16 pt-32 lg:pt-16">
         <div key={`text-${activeCourse}`} className="z-10 py-10 text-center lg:text-left lg:pr-20 animate-in fade-in slide-in-from-left-8 duration-700">
-          <h1 className={`text-5xl md:text-6xl lg:text-[100px] font-extralight mb-5 leading-[1] tracking-tighter ${activeCourse === 0 ? 'text-black' : 'text-white'}`}>
-            {instructors[activeCourse].title.split(' ')[0]} <br className="hidden lg:block" /> {instructors[activeCourse].title.split(' ')[1]}
+          <h1 className={`text-5xl md:text-6xl lg:text-[72px] font-extrabold mb-6 leading-[1.05] tracking-tighter ${activeCourse === 0 ? 'text-black' : 'text-white'}`}>
+            {titleObj.line1} <br className="hidden lg:block" /> <span className={activeCourse === 0 ? 'text-black' : 'text-yellow-400'}>{titleObj.line2}</span>
           </h1>
-          <p className={`text-base lg:text-lg font-medium mb-12 max-w-sm mx-auto lg:mx-0 ${activeCourse === 0 ? 'text-black/60' : 'text-white/30'}`}>
+          <p className={`text-base lg:text-lg font-medium mb-12 max-w-xl mx-auto lg:mx-0 leading-relaxed ${activeCourse === 0 ? 'text-black/70' : 'text-white/60'}`}>
             {instructors[activeCourse].desc}
           </p>
           <button className={`group inline-flex items-center gap-4 rounded-full px-10 py-4 font-bold transition-all duration-300 border-0 ${activeCourse === 0 ? 'bg-black text-white hover:bg-zinc-800' : 'bg-white text-black hover:bg-zinc-200'}`}>
             <Play className="w-4 h-4 fill-current" />
-            <span className="text-[11px] uppercase tracking-[0.25em]">Watch trailer</span>
+            <span className="text-[11px] uppercase tracking-[0.25em]">{instructors[activeCourse].btnText}</span>
           </button>
         </div>
 
@@ -89,7 +102,7 @@ const Hero = () => {
             <img 
               src={instructors[activeCourse].portrait} 
               alt="Lead Instructor" 
-              className={`h-full lg:h-[95%] w-auto object-contain transition-all duration-1000 opacity-100`} // Removed grayscale and mix-blend
+              className="h-full lg:h-[95%] w-auto object-contain transition-all duration-1000 opacity-100" 
               style={{
                 maskImage: 'linear-gradient(to top, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%)',
                 WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%)'
@@ -100,7 +113,7 @@ const Hero = () => {
       </div>
 
       {/* BENTO FOOTER */}
-      <div className={`grid grid-cols-1 lg:grid-cols-[1.3fr,1fr,1fr] h-auto w-full items-end`}>
+      <div className="grid grid-cols-1 lg:grid-cols-[1.3fr,1fr,1fr] h-auto w-full items-end">
         <div className="bg-white flex items-center justify-end px-10 py-6 lg:py-0 h-full lg:h-[500px] relative">
           <div className="absolute -top-8 right-0 bg-white px-8 py-4 flex gap-6 shadow-2xl z-20">
             <ChevronLeft onClick={handlePrev} className="w-5 h-5 cursor-pointer text-black hover:text-blue-600" />
@@ -128,7 +141,7 @@ const Hero = () => {
             key={`prod-${activeCourse}`}
             src={products[activeCourse].img} 
             alt="Feature Product" 
-            className="w-44 lg:w-60 rotate-[-15deg] drop-shadow-[0_20px_40px_rgba(0,0,0,0.3)] z-10 transition-all duration-700 group-hover:scale-110 animate-in fade-in zoom-in opacity-100" // Removed grayscale
+            className="w-44 lg:w-60 rotate-[-15deg] drop-shadow-[0_20px_40px_rgba(0,0,0,0.3)] z-10 transition-all duration-700 group-hover:scale-110 animate-in fade-in zoom-in opacity-100" 
           />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/10 font-black text-[90px] lg:text-[140px] pointer-events-none italic text-center leading-none uppercase">
             {products[activeCourse].name}
