@@ -4,7 +4,7 @@ import { ArrowUpRight, Play, Globe, Shield, Zap } from 'lucide-react';
 
 // --- IMPORT LOCAL ASSETS ---
 import LegacyImg from '../../assests/1920x700 Hero Banner.jpg';
-import TechImg from '../../assests/Ausbildung student-.jpg';
+import TechImg from '../../assests/Ausbildung student-.webp';
 import OpsImg from '../../assests/Nurses Prelimanary interview.jpg';
 import GlobalImg from '../../assests/Nurses with Trainer.jpg';
 
