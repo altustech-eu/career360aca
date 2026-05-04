@@ -9,6 +9,7 @@ import Banner from './components/pages/banner'; // Import your banner
 function App() {
   return (
     <Router>
+     
       {/* 1. Banner stays at the absolute top */}
       <Banner /> 
       

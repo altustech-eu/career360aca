@@ -21,14 +21,14 @@ const WordmarkTicker = () => {
         {tickerWords.map((word, index) => (
           <div key={index} className="flex items-center mx-8 lg:mx-8 group">
             {/* The Wordmark */}
-            <span className="text-2xl md:text-2xl font-black tracking-tighter text-black/20 group-hover:text-black transition-all duration-700 cursor-default uppercase">
+            <span className="text-2xl md:text-2xl font-black tracking-tighter text-slate-400 group-hover:text-[#DD0000] transition-all duration-700 cursor-default uppercase">
               {word}
             </span>
             
-            {/* Decorative Separator (Prasanth D Studio Style) */}
-            <div className="ml-16 flex gap-1 items-center opacity-10 group-hover:opacity-100 transition-opacity duration-700">
+            {/* Decorative Separator (German Flag Colors) */}
+            <div className="ml-16 flex gap-1 items-center opacity-30 group-hover:opacity-100 transition-opacity duration-700">
                <div className="w-1.5 h-1.5 rounded-full bg-black" />
-               <div className="w-1.5 h-1.5 rounded-full bg-[#ccff00]" />
+               <div className="w-1.5 h-1.5 rounded-full bg-[#FFCC00]" />
             </div>
           </div>
         ))}
@@ -43,9 +43,6 @@ const WordmarkTicker = () => {
           animation: ticker 25s linear infinite;
           display: flex;
           width: fit-content;
-        }
-        .animate-ticker:hover {
-          animation-play-state: paused;
         }
       `}</style>
     </div>

@@ -34,7 +34,7 @@ export default function Footer() {
                 onClick={() => setActiveLoc(idx)}
                 className={`px-6 py-2.5 rounded-full text-[11px] font-black tracking-[0.15em] transition-all duration-300 ${
                   activeLoc === idx 
-                  ? 'bg-[#0e63ed] text-white shadow-lg' 
+                  ? 'bg-[#DD0000] text-white shadow-lg' 
                   : 'text-gray-500 hover:text-white'
                 }`}
               >
@@ -47,7 +47,7 @@ export default function Footer() {
           <div className="flex gap-3">
             <a 
               href="mailto:bloomfieldrealtors@gmail.com" 
-              className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-gray-400 hover:bg-[#0e63ed] hover:text-white transition-all border border-white/5"
+              className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-gray-400 hover:bg-[#DD0000] hover:text-white transition-all border border-white/5"
               title="Email Us"
             >
               <Mail size={16} />
@@ -56,7 +56,7 @@ export default function Footer() {
               href="https://www.instagram.com/bloomfieldrealtors/" 
               target="_blank" 
               rel="noreferrer"
-              className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-gray-400 hover:bg-[#0e63ed] hover:text-white transition-all border border-white/5"
+              className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-gray-400 hover:bg-[#DD0000] hover:text-white transition-all border border-white/5"
               title="Instagram"
             >
               <Icon icon="mdi:instagram" className="text-base" />
@@ -65,7 +65,7 @@ export default function Footer() {
               href="https://linkedin.com" 
               target="_blank"
               rel="noreferrer"
-              className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-gray-400 hover:bg-[#0e63ed] hover:text-white transition-all border border-white/5"
+              className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-gray-400 hover:bg-[#DD0000] hover:text-white transition-all border border-white/5"
               title="LinkedIn"
             >
               <Linkedin size={16} fill="currentColor" />
@@ -75,7 +75,7 @@ export default function Footer() {
 
         {/* 2. CONTACT INFO BAR */}
         <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-start mb-24 transition-all duration-500">
-          <p className="text-lg md:text-xl font-black tracking-tight text-[#0e63ed]">
+          <p className="text-lg md:text-xl font-black tracking-tight text-[#FFCC00]">
             {currentLoc.phone}
           </p>
           <p className="text-gray-500 text-sm md:text-base font-medium">
@@ -92,17 +92,17 @@ export default function Footer() {
           <div className="flex gap-8">
             <a 
               href="https://example.com/terms" 
-              className="group flex items-center gap-1.5 text-xs md:text-sm font-bold text-gray-400 hover:text-[#0e63ed] transition-colors"
+              className="group flex items-center gap-1.5 text-xs md:text-sm font-bold text-gray-400 hover:text-[#FFCC00] transition-colors"
             >
               Terms and Conditions
-              <ArrowUpRight size={14} className="text-gray-600 group-hover:text-[#0e63ed]" />
+              <ArrowUpRight size={14} className="text-gray-600 group-hover:text-[#FFCC00]" />
             </a>
             <a 
               href="https://example.com/privacy" 
-              className="group flex items-center gap-1.5 text-xs md:text-sm font-bold text-gray-400 hover:text-[#0e63ed] transition-colors"
+              className="group flex items-center gap-1.5 text-xs md:text-sm font-bold text-gray-400 hover:text-[#FFCC00] transition-colors"
             >
               Privacy Policy
-              <ArrowUpRight size={14} className="text-gray-600 group-hover:text-[#0e63ed]" />
+              <ArrowUpRight size={14} className="text-gray-600 group-hover:text-[#FFCC00]" />
             </a>
           </div>
         </div>

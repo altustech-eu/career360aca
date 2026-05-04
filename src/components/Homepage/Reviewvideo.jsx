@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Play, X, } from "lucide-react";
+import { Play, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const testimonials = [
@@ -45,12 +45,12 @@ export default function VideoTestimonialSection() {
       
       {/* 1. TOP NAVIGATION BAR */}
       <div className="max-w-[1600px] mx-auto px-6 mb-12 flex flex-col md:flex-row justify-between items-center gap-6">
-        <button className="bg-black text-white px-8 py-3 rounded-full text-sm font-bold hover:scale-105 transition-transform">
+        <button className="bg-black text-white px-8 py-3 rounded text-sm font-bold hover:scale-105 transition-transform" style={{ borderRadius: "0px" }}>
           Let's go
         </button>
       </div>
 
-      {/* 2. AUTO-SCROLLING VIDEO GRID */}
+      {/* 2. AUTO-SCROLLING VIDEO GRID (Adjusted to 9:16 Aspect Ratio) */}
       <div className="relative flex overflow-hidden">
         <motion.div 
           className="flex gap-6 whitespace-nowrap"
@@ -61,19 +61,20 @@ export default function VideoTestimonialSection() {
             <div 
               key={`${item.id}-${idx}`}
               onClick={() => setSelectedVideo(item)}
-              className="relative w-[300px] md:w-[380px] aspect-[3/4] rounded-[2rem] overflow-hidden group cursor-pointer border border-gray-50"
+              className="relative w-[225px] md:w-[250px] aspect-[9/16] overflow-hidden group cursor-pointer border border-gray-100"
+              style={{ borderRadius: "0px" }}
             >
               <img src={item.img} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="" />
               <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-colors duration-500" />
               
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-xl">
-                  <Play size={20} fill="white" className="text-white ml-1" />
+                <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-xl">
+                  <Play size={18} fill="white" className="text-white ml-0.5" />
                 </div>
               </div>
 
-              <div className="absolute bottom-0 left-0 w-full p-8 pt-20 bg-gradient-to-t from-black/80 to-transparent">
-                <h4 className="text-white font-medium text-lg tracking-tight leading-tight whitespace-normal">
+              <div className="absolute bottom-0 left-0 w-full p-6 pt-16 bg-gradient-to-t from-black/80 to-transparent">
+                <h4 className="text-white font-medium text-sm tracking-tight leading-tight whitespace-normal">
                   {item.title}
                 </h4>
               </div>
@@ -102,12 +103,14 @@ export default function VideoTestimonialSection() {
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="relative w-full max-w-5xl aspect-video bg-black rounded-[2rem] overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] z-10"
+              className="relative w-full max-w-5xl aspect-video bg-black overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] z-10"
+              style={{ borderRadius: "0px" }}
             >
               {/* Close button inside modal */}
               <button 
                 onClick={() => setSelectedVideo(null)}
-                className="absolute top-6 right-6 z-20 p-3 bg-black/20 backdrop-blur-md rounded-full text-white hover:bg-white hover:text-black transition-all"
+                className="absolute top-6 right-6 z-20 p-3 bg-black/20 backdrop-blur-md rounded text-white hover:bg-white hover:text-black transition-all"
+                style={{ borderRadius: "0px" }}
               >
                 <X size={20} />
               </button>

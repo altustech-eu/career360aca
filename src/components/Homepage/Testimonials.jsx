@@ -43,7 +43,7 @@ export default function VideoTestimonialsRedesign() {
   const active = mainTestimonials[activeIndex];
 
   return (
-    <div className="bg-[#050505] font-sans selection:bg-cyan-500 selection:text-white min-h-screen">
+    <div className="bg-[#050505] font-sans selection:bg-[#FFCC00] selection:text-black min-h-screen">
       <section className="py-24 text-white overflow-hidden relative">
         <div className="max-w-[1600px] mx-auto px-6 md:px-16">
           
@@ -55,14 +55,14 @@ export default function VideoTestimonialsRedesign() {
                    <button 
                     key={i} 
                     onClick={() => setActiveIndex(i)}
-                    className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${activeIndex === i ? 'bg-cyan-400 scale-150' : 'bg-white/20 hover:bg-white/40'}`}
+                    className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${activeIndex === i ? 'bg-[#FFCC00] scale-150' : 'bg-white/20 hover:bg-white/40'}`}
                    />
                  ))}
                </div>
                <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="h-[1px] w-8 bg-cyan-500"></div>
-                    <span className="text-cyan-400 font-bold text-[10px] uppercase tracking-[0.4em]">Success Stories</span>
+                    <div className="h-[1px] w-8 bg-[#DD0000]"></div>
+                    <span className="text-[#FFCC00] font-bold text-[10px] uppercase tracking-[0.4em]">Success Stories</span>
                   </div>
                   <h2 className="text-4xl md:text-6xl font-extralight tracking-tighter uppercase leading-none">
                     Real Results. Real Dreams.
@@ -90,14 +90,14 @@ export default function VideoTestimonialsRedesign() {
                >
                  <div className="absolute top-0 right-0 w-24 h-[1px] bg-white/20" />
                  <div className="relative z-10 text-right">
-                    <span className="text-[10px] font-black text-cyan-500/50 uppercase tracking-[0.5em] block mb-4">Learner Outcome</span>
+                    <span className="text-[10px] font-black text-[#DD0000]/50 uppercase tracking-[0.5em] block mb-4">Learner Outcome</span>
                     <h1 className="text-7xl md:text-9xl font-extralight tracking-tighter text-white mb-2 leading-none">{active.stat}</h1>
                     <p className="text-[11px] font-bold text-white/40 uppercase tracking-[0.3em]">{active.statLabel}</p>
                  </div>
                  <div className="mt-12 flex justify-end">
                     <button className="group flex items-center gap-6">
-                       <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 group-hover:text-cyan-400 transition-colors">Play Success Story</span>
-                       <div className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center group-hover:border-cyan-400 group-hover:bg-cyan-400 group-hover:text-black transition-all duration-500"><Play size={18} fill="currentColor" /></div>
+                       <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 group-hover:text-[#FFCC00] transition-colors">Play Success Story</span>
+                       <div className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#FFCC00] group-hover:bg-[#FFCC00] group-hover:text-black transition-all duration-500"><Play size={18} fill="currentColor" /></div>
                     </button>
                  </div>
                </motion.div>
@@ -110,7 +110,7 @@ export default function VideoTestimonialsRedesign() {
                 initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
                 className="border border-white/5 p-8 flex flex-col justify-between bg-zinc-900/50 backdrop-blur-md min-h-[400px]"
                >
-                  <Quote className="w-8 h-8 text-cyan-500 opacity-30 mb-6" />
+                  <Quote className="w-8 h-8 text-[#FFCC00] opacity-30 mb-6" />
                   <p className="text-lg font-light leading-relaxed italic text-white/80">"{active.quote}"</p>
                   <div className="mt-8 pt-6 border-t border-white/5">
                     <p className="text-sm font-medium tracking-wide text-white">{active.name}</p>
@@ -126,9 +126,9 @@ export default function VideoTestimonialsRedesign() {
                <motion.div 
                 key={`substat-${activeIndex}`}
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-                className="border border-cyan-400/30 p-10 flex flex-col justify-center text-center bg-black/40 backdrop-blur-sm min-h-[250px]"
+                className="border border-[#DD0000]/30 p-10 flex flex-col justify-center text-center bg-black/40 backdrop-blur-sm min-h-[250px]"
                >
-                  <h3 className="text-5xl font-extralight text-cyan-400 mb-4 tracking-tighter italic">{active.subStat.split(' ')[0]}</h3>
+                  <h3 className="text-5xl font-extralight text-[#DD0000] mb-4 tracking-tighter italic">{active.subStat.split(' ')[0]}</h3>
                   <p className="text-[10px] font-bold text-white/50 uppercase tracking-[0.2em] leading-relaxed">
                     {active.subStat.split(' ').slice(1).join(' ')}
                   </p>
@@ -161,7 +161,7 @@ export default function VideoTestimonialsRedesign() {
                  <button 
                   key={item.id}
                   onClick={() => setActiveIndex(idx)}
-                  className={`px-8 py-4 border rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-500 whitespace-nowrap ${activeIndex === idx ? 'border-cyan-400 text-cyan-400 bg-cyan-400/5' : 'border-white/5 text-white/40 hover:border-white/20'}`}
+                  className={`px-8 py-4 border rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-500 whitespace-nowrap ${activeIndex === idx ? 'border-[#DD0000] text-[#DD0000] bg-[#DD0000]/5' : 'border-white/5 text-white/40 hover:border-white/20'}`}
                  >
                    {item.name} - {item.role.split(' – ').pop()}
                  </button>

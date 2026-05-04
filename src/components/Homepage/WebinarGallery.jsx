@@ -39,7 +39,7 @@ const WebinarGallery = () => {
          </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row w-full min-h-[600px] lg:min-h-[750px] overflow-hidden relative">
+      <div className="flex flex-col lg:flex-row w-full min-h-[600px] lg:min-h-[600px] overflow-hidden relative">
         
         {webinars.map((item) => (
           <div 

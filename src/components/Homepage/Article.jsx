@@ -18,7 +18,9 @@ const articles = [
 ];
 
 export default function GoldenArticleSection() {
-  const accentColor = "#EAB308"; // Golden Yellow
+  // German flag-inspired accent colors (Red and Yellow)
+  const accentColor = "#DD0000"; // Primary highlight (Red)
+  const secondaryColor = "#FFCC00"; // Accent text/line (Yellow)
 
   return (
     <section className="bg-[#050505] py-24 font-sans relative overflow-hidden selection:bg-yellow-500 selection:text-black">
@@ -38,9 +40,9 @@ export default function GoldenArticleSection() {
             viewport={{ once: true }}
             className="flex items-center justify-center gap-3 mb-6"
           >
-            <div className="h-[1px] w-12 bg-yellow-500/50" />
-            <span className="text-yellow-500 font-bold text-[10px] uppercase tracking-[0.6em]">Journal & Press</span>
-            <div className="h-[1px] w-12 bg-yellow-500/50" />
+            <div className="h-[1px] w-12 bg-[#DD0000]/50" />
+            <span className="text-[#FFCC00] font-bold text-[10px] uppercase tracking-[0.6em]">Journal & Press</span>
+            <div className="h-[1px] w-12 bg-[#DD0000]/50" />
           </motion.div>
           
           <motion.h1 
@@ -48,9 +50,9 @@ export default function GoldenArticleSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-6xl md:text-8xl font-light tracking-tighter text-white uppercase leading-none"
+            className="text-5xl md:text-7xl font-extralight tracking-tight text-white uppercase leading-none"
           >
-            The <span className="font-black italic text-yellow-500">Article</span> Hub
+            The <span className="font-normal italic text-[#FFCC00]">Article</span> Hub
           </motion.h1>
         </div>
       </div>
@@ -79,19 +81,19 @@ export default function GoldenArticleSection() {
               {/* Text Block */}
               <div className="w-full md:w-7/12 flex flex-col items-start">
                 <h3 
-                  className="text-4xl lg:text-6xl font-black uppercase tracking-tighter mb-5 transition-transform duration-500 group-hover:-translate-y-1"
-                  style={{ color: accentColor }}
+                  className="text-3xl lg:text-5xl font-light uppercase tracking-tight mb-5 transition-transform duration-500 group-hover:-translate-y-1"
+                  style={{ color: secondaryColor }}
                 >
                   {article.title}
                 </h3>
                 
-                <p className="text-gray-400 text-sm md:text-lg leading-relaxed mb-10 max-w-lg font-light">
+                <p className="text-gray-400 text-xs md:text-sm leading-relaxed mb-10 max-w-lg font-extralight">
                   {article.desc}
                 </p>
 
                 {/* Interactive CTA */}
                 <button className="flex items-center gap-5 group/btn outline-none">
-                  <span className="text-[11px] font-black text-white uppercase tracking-[0.4em] group-hover/btn:opacity-60 transition-opacity">
+                  <span className="text-[10px] font-bold text-white uppercase tracking-[0.4em] group-hover/btn:opacity-60 transition-opacity">
                     View Story
                   </span>
                   <div className="flex items-center">
@@ -114,9 +116,9 @@ export default function GoldenArticleSection() {
 
         {/* Bottom Explorer Action */}
         <div className="mt-32 flex justify-center">
-          <button className="group relative px-16 py-5 overflow-hidden border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.5em] transition-all hover:border-yellow-500">
+          <button className="group relative px-16 py-5 overflow-hidden border border-white/10 text-white text-[10px] font-bold tracking-[0.5em] transition-all hover:border-[#DD0000]">
             <span className="relative z-10 group-hover:text-black transition-colors duration-500">Explore All Insights</span>
-            <div className="absolute inset-0 bg-yellow-500 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+            <div className="absolute inset-0 bg-[#DD0000] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
           </button>
         </div>
       </div>

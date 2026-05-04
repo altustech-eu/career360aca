@@ -56,7 +56,7 @@ const AboutUsSection = () => {
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="text-[10px] font-black uppercase tracking-[0.5em] text-blue-600 mb-6 block"
+              className="text-[10px] font-black uppercase tracking-[0.5em] text-[#DD0000] mb-6 block"
             >
               Est. 2024
             </motion.span>
@@ -66,7 +66,7 @@ const AboutUsSection = () => {
               transition={{ delay: 0.1 }}
               className="text-4xl md:text-6xl font-semibold text-slate-900 tracking-tighter leading-[0.9] mb-8"
             >
-              We build the bridge between ambition and <span className="italic font-normal">opportunity in Germany.</span>
+              We build the bridge between ambition and <span className="italic font-normal text-[#FFCC00]">opportunity in Germany.</span>
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0 }}
@@ -81,9 +81,6 @@ const AboutUsSection = () => {
               is matched with the right opportunity in Germany.
             </motion.p>
           </div>
-
-        
-    
         </div>
       </section>
 
@@ -121,7 +118,7 @@ const AboutUsSection = () => {
                 animate={{ y: hoveredIdx === idx ? 0 : 15 }}
                 className="relative z-10"
               >
-                <span className="text-[9px] font-black uppercase tracking-[0.4em] text-white/60 mb-2 block">
+                <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#FFCC00] mb-2 block">
                   {panel.subtitle}
                 </span>
                 <h3 className="text-xl md:text-2xl font-bold text-white tracking-tighter leading-none mb-4">
@@ -139,7 +136,7 @@ const AboutUsSection = () => {
                   <p className="text-xs text-white/60 font-medium mb-4 leading-relaxed max-w-[320px]">
                     {panel.desc}
                   </p>
-                  <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all">
+                  <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#DD0000] hover:border-[#DD0000] transition-all">
                     <ArrowUpRight size={14} />
                   </div>
                 </motion.div>
@@ -161,7 +158,7 @@ const AboutUsSection = () => {
 
       {/* --- SUBTLE FOOTER TAG --- */}
       <div className="py-12 bg-white flex justify-center">
-         <span className="text-[10px] font-bold uppercase tracking-[0.8em] text-slate-200">Career360 Intelligence</span>
+         <span className="text-[10px] font-bold uppercase tracking-[0.8em] text-[#DD0000]">Career360 Intelligence</span>
       </div>
 
     </div>

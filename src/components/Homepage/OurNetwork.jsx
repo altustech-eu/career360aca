@@ -61,7 +61,7 @@ export default function OurNetwork() {
         <div className="mb-24 md:mb-32">
           <h2 className="text-center md:text-left leading-none flex flex-col">
             <span className="text-6xl md:text-6xl font-thin text-slate-300 lowercase tracking-tighter">Our</span>
-            <span className="text-7xl md:text-[7rem] font-black text-[#1a365d] uppercase tracking-tighter -mt-4 md:-mt-12">network</span>
+            <span className="text-7xl md:text-[7rem] font-black text-[#DD0000] uppercase tracking-tighter -mt-4 md:-mt-12">network</span>
           </h2>
         </div>
 
@@ -70,7 +70,7 @@ export default function OurNetwork() {
           {/* LOGO GRID */}
           <div className="lg:col-span-7 relative flex flex-col justify-center">
             <div className="absolute left-[-20px] lg:left-[-60px] top-1/2 -translate-y-1/2 z-10">
-              <button onClick={prevSlide} className="p-3 bg-[#A3E635] rounded-full text-white shadow-xl hover:scale-110 transition-all">
+              <button onClick={prevSlide} className="p-3 bg-[#FFCC00] rounded-full text-black shadow-xl hover:scale-110 transition-all">
                 <ChevronLeft size={24} />
               </button>
             </div>
@@ -103,14 +103,14 @@ export default function OurNetwork() {
                   <button
                     key={i} 
                     onClick={() => setPage(i)}
-                    className={`h-2 transition-all duration-500 rounded-full ${i === page ? 'w-12 bg-[#1a365d]' : 'w-2 bg-slate-300'}`} 
+                    className={`h-2 transition-all duration-500 rounded-full ${i === page ? 'w-12 bg-[#FFCC00]' : 'w-2 bg-slate-300'}`} 
                   />
                 ))}
               </div>
             </div>
 
             <div className="absolute right-[-20px] lg:right-[-60px] top-1/2 -translate-y-1/2 z-10">
-              <button onClick={nextSlide} className="p-3 bg-[#A3E635] rounded-full text-white shadow-xl hover:scale-110 transition-all">
+              <button onClick={nextSlide} className="p-3 bg-[#FFCC00] rounded-full text-black shadow-xl hover:scale-110 transition-all">
                 <ChevronRight size={24} />
               </button>
             </div>
@@ -120,13 +120,13 @@ export default function OurNetwork() {
           <div className="lg:col-span-5 flex flex-col justify-center">
             <div className="max-w-xl">
               <p className="text-4xl md:text-5xl font-medium text-[#1a365d] leading-[1.2] tracking-tight">
-                We offer <span className="text-[#0e63ed] font-bold">education that empowers students</span> through our global network.
+                We offer <span className="text-[#DD0000] font-bold">education that empowers students</span> through our global network.
               </p>
               <p className="mt-8 text-lg text-slate-500 leading-relaxed">
                 By uniting prestigious institutions and recruitment experts, we are creating opportunities for scholars around the world.
               </p>
               <div className="mt-16 flex flex-col sm:flex-row gap-6">
-                 <button className="bg-[#1a365d] text-white px-10 py-5 rounded-full font-bold text-base hover:bg-[#0e63ed] transition-all">
+                 <button className="bg-[#1a365d] text-white px-10 py-5 rounded-full font-bold text-base hover:bg-[#DD0000] transition-all">
                    Partner With Us
                  </button>
                  <button className="border-2 border-slate-200 text-slate-600 px-10 py-5 rounded-full font-bold text-base hover:border-[#1a365d] hover:text-[#1a365d] transition-all">
